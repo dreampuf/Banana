@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+			<?php if (have_posts()) : ?>
+				<?php while (have_posts()) : the_post(); ?>
+					<div class="post" id="post-<?php the_ID(); ?>">
+						<h2 class="post-tltle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+						<div class="postmetadata-top">
+							<span class="post-comments"><?php comments_popup_link('No comments', '1 comment', '% comments'); ?></span>
+							<span class="post-date"><?php the_time('Y/m/d H:i') ?></span>
+							<span class="post-views"><?php if(function_exists('the_views')) {the_views();} ?></span>
+						</div>
+						<div class="entry">
+							<?php the_content(); ?>
+						</div>
+						<div class="postmetadata">
+							<span class="post-cat"><?php the_category(',') ?></span>
+							<span class="post-author"><?php the_author_posts_link(); ?></span>
+							<span class="post-tag"><?php the_tags('', ',', ''); ?></span>
+						</div>
+					</div>
+				<?php endwhile; ?>
+				<div class="navigation">
+					<div class="pagenavi"><?php if(function_exists('wp_pagenavi')) {wp_pagenavi();} ?></div>
+				</div>
+			<?php else : ?>
+				<h2 class="center">Not Found</h2>
+				<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+			<?php endif; ?>
+		</div></div>
+	<?php get_sidebar(); ?>
+	</div>
+{% include 'footer.html' %}

@@ -1,0 +1,35 @@
+<?php get_header(); ?>
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+			<div class="navigation-top"><span>您的位置：</span>搜索结果</div>
+			<?php if (have_posts()) : ?>
+				<?php while (have_posts()) : the_post(); ?>
+					<div class="post" id="post-<?php the_ID(); ?>">
+						<h2 class="post-tltle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+						<div class="postmetadata-top">
+							<span class="post-comments"><?php comments_popup_link('No comments', '1 comment', '% comments'); ?></span>
+							<span class="post-date"><?php the_time('Y/m/d H:i') ?></span>
+							<span class="post-views"><?php if(function_exists('the_views')) {the_views();} ?></span>
+						</div>
+						<div class="entry">
+							<?php the_excerpt(); ?>
+						</div>
+						<div class="postmetadata">
+							<span class="post-cat"><?php the_category(',') ?></span>
+							<span class="post-author"><?php the_author_posts_link(); ?></span>
+							<span class="post-tag"><?php the_tags('', ',', ''); ?></span>
+						</div>
+					</div>
+				<?php endwhile; ?>
+				<div class="navigation">
+					<div class="pagenavi"><?php if(function_exists('wp_pagenavi')) {wp_pagenavi();} ?></div>
+				</div>
+			<?php else : ?>
+			<div class="center"><h2>没有搜到您查询的相关信息</h2></div>
+			<p class="center">不好意思，您可以换个关键词重新搜索一下。</p>
+			<p class="center"><?php include (TEMPLATEPATH . '/searchform.php'); ?></p>
+			<?php endif; ?>
+		</div></div>
+	<?php get_sidebar(); ?>
+	</div>
+<?php get_footer(); ?>

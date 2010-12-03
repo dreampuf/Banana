@@ -1,0 +1,51 @@
+<?php get_header(); ?>
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+		<?php if (have_posts()) : ?>
+			<div class="navigation-top">
+				  <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
+				  <?php /* If this is a category archive */ if (is_category()) { ?>
+					<span> 相关分类：</span><a href="<?php bloginfo('url'); ?>">首页</a> > <?php single_cat_title(); ?> 
+				  <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
+					<span> Tag标签:</span>  <?php single_tag_title(); ?>
+				  <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
+					<span>日存档:</span> <?php the_time('Y.m.d'); ?> 
+				  <?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
+					<span>月存档:</span>  <?php the_time('Y.m'); ?>
+				  <?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
+					<span>年存档:</span> <?php the_time('Y'); ?>
+				  <?php /* If this is an author archive */ } elseif (is_author()) { ?>
+					<span>作者存档</span> 
+				  <?php /* If this is a paged archive */ } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) { ?>
+					<span>博客存档</span>
+				  <?php } ?>
+			</div>
+			<?php while (have_posts()) : the_post(); ?>
+			<div class="post">
+				<h2 class="post-tltle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+					<div class="postmetadata-top">
+						<span class="post-comments"><?php comments_popup_link('No comments', '1 comment', '% comments'); ?></span>
+						<span class="post-date"><?php the_time('Y/m/d H:i') ?></span>
+						<span class="post-views"><?php if(function_exists('the_views')) {the_views();} ?></span>
+					</div>
+					<div class="entry">
+						<?php the_excerpt(); ?>
+					</div>
+					<div class="postmetadata">
+						<span class="post-cat"><?php the_category(',') ?></span>
+						<span class="post-author"><?php the_author_posts_link(); ?></span>
+						<span class="post-tag"><?php the_tags('', ',', ''); ?></span>
+					</div>
+				</div>
+			<?php endwhile; ?>
+				<div class="navigation">
+					<div class="pagenavi"><?php if(function_exists('wp_pagenavi')) {wp_pagenavi();} ?></div>
+				</div>
+		<?php else : ?>
+			<h2 class="center">没有相关存档</h2>
+			<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+		<?php endif; ?>
+		</div></div>
+		<?php get_sidebar(); ?>
+	</div>
+<?php get_footer(); ?>

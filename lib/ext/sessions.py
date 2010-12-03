@@ -46,7 +46,7 @@ class Session(object):
             # Send the Cookie header to the browser
             print self.cookie
 
-    # Private method to update the cache on modification 
+    # Private method to update the cache on modification
     def _update_cache(self):
         memcache.replace(self.key, self.session, 3600)
 
