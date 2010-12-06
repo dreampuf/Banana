@@ -10,7 +10,7 @@ from django.utils import simplejson as json
 # Note - please do not use this for production applications
 # see: http://code.google.com/p/appengine-utitlies/
 
-COOKIE_NAME = 'appengine-simple-session-sid'
+COOKIE_NAME = 'Banana_id'
 DEFAULT_COOKIE_PATH = '/'
 SESSION_EXPIRE_TIME = 7200 # sessions are valid for 7200 seconds (2 hours)
 

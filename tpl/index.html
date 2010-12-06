@@ -1,33 +1,33 @@
 {% include 'header.html' %}
 	<div id="main">
 		<div id="maincontent"><div class="forFlow">
-			<?php if (have_posts()) : ?>
-				<?php while (have_posts()) : the_post(); ?>
-					<div class="post" id="post-<?php the_ID(); ?>">
-						<h2 class="post-tltle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+			{% if posts|count > 0 %}
+				{% for url, realurl, title, lencomment, created, views, precontent, catetitle, authorname, tags in posts %}
+					<div class="post" id="post-{{ url }}">
+						<h2 class="post-tltle"><a href="{{ baseurl }}/{{ realurl }}" rel="bookmark" title="{{ title }}">{{ title }}</a></h2>
 						<div class="postmetadata-top">
-							<span class="post-comments"><?php comments_popup_link('No comments', '1 comment', '% comments'); ?></span>
-							<span class="post-date"><?php the_time('Y/m/d H:i') ?></span>
-							<span class="post-views"><?php if(function_exists('the_views')) {the_views();} ?></span>
+							<span class="post-comments">{{ lencomment }} comments</span>
+							<span class="post-date">{{ created.strftime("%Y/%m/%d %H:%M") }}</span>
+							<span class="post-views">{{ views }}</span>
 						</div>
 						<div class="entry">
-							<?php the_content(); ?>
+							{{ precontent }}
 						</div>
 						<div class="postmetadata">
-							<span class="post-cat"><?php the_category(',') ?></span>
-							<span class="post-author"><?php the_author_posts_link(); ?></span>
-							<span class="post-tag"><?php the_tags('', ',', ''); ?></span>
+							<span class="post-cat">{{ catetitle }}</span>
+							<span class="post-author">{{ authorname }}</span>
+							<span class="post-tag">{{ tags|join(",") }}</span>
 						</div>
 					</div>
-				<?php endwhile; ?>
+				{% endfor %}
 				<div class="navigation">
-					<div class="pagenavi"><?php if(function_exists('wp_pagenavi')) {wp_pagenavi();} ?></div>
+					<div class="pagenavi">{% import 'macros.html' as macros %}{% if not pagetag is defined %}{% set pagetag = "page/" %}{% endif %}{{ macros.pager(p, pagetag) }}</div>
 				</div>
-			<?php else : ?>
+			{% else %}
 				<h2 class="center">Not Found</h2>
 				<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
-			<?php endif; ?>
+            {% endif %}
 		</div></div>
-	<?php get_sidebar(); ?>
+	{% include 'sidebar.html' %}
 	</div>
 {% include 'footer.html' %}

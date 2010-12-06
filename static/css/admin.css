@@ -1,3 +1,6 @@
+a {
+    line-height: inherit;
+}
 a:link, a:visited, a:active {
 	color: #636a86;
 	text-decoration: none;

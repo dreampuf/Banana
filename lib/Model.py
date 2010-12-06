@@ -8,7 +8,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
-import pickle, logging
+import pickle, logging, md5
 from google.appengine.ext import db
 from google.appengine.ext.db import Model as DBModel
 from google.appengine.api import memcache
@@ -23,6 +23,12 @@ def expand(ls, n = []):
 
 def toBlob(val):
     return db.Blob(val)
+
+def md5pro(*args):
+    hash = md5.new()
+    for i in args:
+        hash.update(str(i))
+    return hash.hexdigest()
 
 _settingcache = {}
 
@@ -139,9 +145,20 @@ class BaseModel(DBModel):
         super(BaseModel, self).delete(**kw)
 
     @classmethod
-    def fetch(cls, p, plen = 20):
+    def deletes(cls, vals):
+        tname = "tablecounter_%s" % cls.__name__
+        tval = Setting.getValue(tname, useMemoryCache=False)
+        if tval == None:
+            tval = cls.all().count(None)
+        Setting.setValue(tname, tval - len(vals), False)
+
+        db.delete(vals)
+
+    @classmethod
+    def fetch(cls, p, plen = 20, fun=None):
         #limit, offset=0, **kwargs
-        total = cls.total()
+        key = "" if fun == None else md5pro(fun.func_code.co_consts, fun.func_code.co_code)
+        total = cls.total(key, fun)
         n = total / plen
         if total % plen != 0:
             n = n + 1
@@ -149,16 +166,16 @@ class BaseModel(DBModel):
         if p < 0 or p > n:
             p = 1
         offset = (p - 1) * plen
-        results = cls.all().fetch(plen, offset)
+        results = cls.all().fetch(plen, offset) if fun == None else fun(cls.all()).fetch(plen, offset)
         return _Pager(results, total, p, n)
 
     @classmethod
-    def total(cls):
-        tname = "tablecounter_%s" % cls.__name__
+    def total(cls, key="", fun=None):
+        tname = "tablecounter_%s::%s" % (cls.__name__, key)
         tval = Setting.getValue(tname, useMemoryCache=False)
         if tval == None:
             logging.info("beLongtime")
-            tval = cls.all().count(None)
+            tval = cls.all().count(None) if fun == None else fun(cls.all()).count(None)
             Setting.setValue(tname, tval, False)
         return tval
 
@@ -172,9 +189,14 @@ class User(BaseModel):
     lastip = db.StringProperty()
     lastlogin = db.DateTimeProperty(auto_now=True)
 
-    email = db.StringProperty()
+    email = db.EmailProperty()
+
+    def setEmail(self, val):
+        self.email = db.Email(val)
 
 class Category(BaseModel):
+    ishidden = db.BooleanProperty(default=False)
+
     title = db.StringProperty()
     description = db.StringProperty()
     order = db.IntegerProperty(default=0)
@@ -186,9 +208,28 @@ class Tag(BaseModel):
 
     @property
     def posts(self):
-        return [i.post for i in self.__posts]
+        if not hasattr(self, "_posts"):
+            self._posts = [i.post for i in self._posts.fetch(1000)]
+        return self._posts
+
+    @property
+    def postslen(self):
+        '''return a integer of post, the post's tags porperty used self'''
+        if not hasattr(self, "_postlen"):
+            self._postlen = tags_posts.all().filter("tag =", self.key()).count()
+        return self._postlen
+
+class PostStatus(object):
+    NORMAL = "normal"
+    HIDDEN = "hidden"
+    TOP = "top"
+    PAGE = "page"
 
 class Post(BaseModel):
+    status = db.StringProperty(default=PostStatus.NORMAL)
+    realurl = db.StringProperty()
+    enablecomment = db.BooleanProperty(default=True)
+
     category = db.ReferenceProperty(Category, collection_name="posts")
     author = db.ReferenceProperty(User, collection_name="posts")
     title = db.StringProperty()
@@ -196,24 +237,36 @@ class Post(BaseModel):
     url = db.StringProperty()
     content = db.TextProperty()
     precontent = db.TextProperty()
+    views = db.IntegerProperty(default=0)
 
     @property
     def tags(self):
-        return [i.tag for i in self.__tags]
+        if not hasattr(self, "_ptags"):
+            self._ptags = [i.tag for i in self._tags.fetch(1000)]
+        return self._ptags
 
 class tags_posts(BaseModel):
-    tag = db.ReferenceProperty(Tag, collection_name="__posts")
-    post = db.ReferenceProperty(Post, collection_name="__tags")
+    tag = db.ReferenceProperty(Tag, collection_name="_posts")
+    post = db.ReferenceProperty(Post, collection_name="_tags")
+
+class CommentType(object):
+    COMMENT = "comment"
+    TRACKBACK = "trackback"
+    PINGBACK = "pingback"
 
 class Comment(BaseModel):
+    commenttype = db.StringProperty(default=CommentType.COMMENT)
+
     belong = db.ReferenceProperty(Post, collection_name="comments")
     author = db.ReferenceProperty(User, collection_name="comments")
     re = db.SelfReferenceProperty(collection_name="children")
     content = db.TextProperty()
     created = db.DateTimeProperty(auto_now_add=True)
+    nickname = db.StringProperty()
     ip = db.StringProperty()
     website = db.LinkProperty()
     email = db.EmailProperty()
+    hascheck = db.BooleanProperty(default=True)
 
     def setWebsite(self, val):
         self.website = db.Link(val)
@@ -228,6 +281,7 @@ class Attachment(BaseModel):
     filename = db.StringProperty()
     filetype = db.StringProperty()
     content = db.BlobProperty()
+    created = db.DateTimeProperty(auto_now_add=True)
 
     @classmethod
     def toContent(cls, val):

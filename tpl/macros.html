@@ -1,14 +1,14 @@
-﻿{% macro pager(p, argname="page", argstyle="?", len=5) -%}{% if p != None %}
+﻿{% macro pager(p, argstyle="?", len=5) -%}{% if p != None %}
 <div class="navigation">
 	<div class="pagenavi">
-    {% if p.index-len > 1 %}<a href="{{argstyle}}{{argname}}{%if not argstyle[-1:]=="/" %}={%endif%}1">[«]</a>{% endif %}
+    {% if p.index-len > 1 %}<a href="{{ argstyle }}1">[«]</a>{% endif %}
     {% for i in range(p.index-len > 1 and p.index-len or 1,
                       p.index+len <= p.last and p.index+len+1 or p.last+1) %}
         {% if i == p.index %}<span class="now-page">[{{ i }}]</span>
-        {% else %}<a href="{{argstyle + argname}}{%if not argstyle[-1:]=="/" %}={%endif%}{{ i }}">[{{ i }}]</a>
+        {% else %}<a href="{{ argstyle }}{{ i }}">[{{ i }}]</a>
         {% endif %}
     {% endfor %}
-    {% if p.index+len < p.last %}<a href="{{argstyle + argname}}{%if not argstyle[-1:]=="/" %}={%endif%}{{ p.last }}">[»]</a>{% endif %}
+    {% if p.index+len < p.last %}<a href="{{ argstyle }}{{ p.last }}">[»]</a>{% endif %}
     </div>
 </div>
 {% endif %}{%- endmacro %}

@@ -1,27 +1,28 @@
-<?php get_header(); ?>
+{% include 'header.html' %}
 	<div id="main">
 		<div id="maincontent"><div class="forFlow">
-		<div class="navigation-top"><span>您的位置：</span><a href="<?php bloginfo('url'); ?>">首页</a> > <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></div>
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			<div class="post" id="post-<?php the_ID(); ?>">
-				<h2 class="post-tltle"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+		{% if post %}
+        {% set url, realurl, title, lencomment, created, views, content, postkey = post %}
+		<div class="navigation-top"><span>您的位置：</span><a href="{{ baseurl }}">首页</a> > <a href="{{baseurl}}/{{realurl}}" title="{{title}}">{{title}}</a></div>
+			<div class="post" id="post-{{ url }}">
+				<h2 class="post-tltle"><a href="{{ realurl }}" rel="bookmark" title="{{ title }}">{{ title }}</a></h2>
 				<div class="postmetadata-top">
-					<span class="post-comments"><a href="#respond"><?php comments_number('No comments', '1 comment', '% comments'); ?></a></span>
-					<span class="post-date"><?php the_time('Y/m/d H:i') ?></span>
-					<span class="post-views"><?php if(function_exists('the_views')) {the_views();} ?></span>
+					<span class="post-comments"><a href="#respond">{{ lencomment }} comments</a></span>
+					<span class="post-date">{{ created.strftime("%Y/%m/%d %H:%M") }}</span>
+					<span class="post-views">{{ views }}</span>
 				</div>
 				<div class="entry">
-					<?php the_content(); ?>
+					{{ content }}
 				</div>
 
 			</div>
 
-		<?php comments_template(); ?>
-		<?php endwhile; else: ?>
+		{% include 'comments.html' %}
+		{% else %}
 			<h2 class="center">Not Found</h2>
 			<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
-		<?php endif; ?>
+		{% endif %}
 		</div></div>
-	<?php get_sidebar(); ?>
+	{% include 'sidebar.html' %}
 	</div>
-<?php get_footer(); ?>
+{% include 'footer.html' %}

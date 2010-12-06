@@ -67,7 +67,7 @@ $(function(){
     </tr>
     {%- endfor %}
 </tbody></table>
-    {% import 'macros.html' as macros %}{{ macros.pager(p, "", baseurl + "/admin/category/") }}
+    {% import 'macros.html' as macros %}{{ macros.pager(p, baseurl + "/admin/category/") }}
 </fieldset>
 </form>
 </div>

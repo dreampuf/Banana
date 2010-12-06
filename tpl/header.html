@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head profile="http://gmpg.org/xfn/11">
-	<title>{% if is_post %}{{ post_title }} | {% endif %}{{ blog_title }}</title>
+	<title>{% if title %}{{ title }} | {% endif %}{{ blog_title }}</title>
 	{% if not is_post %}<meta name="robots" content="index,follow" />{% else %}<meta name="robots" content="noindex,follow" />{% endif %}
 
 	<meta http-equiv="Content-Type" content="{{ charset }}" />
@@ -11,13 +11,9 @@
 	<link rel="alternate" type="text/xml" title="RSS .92" href="{{ baseurl }}{{ rss_url }}" />
 	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="{{ baseurl }}{{ rss_url }}" />
 	<link rel="stylesheet" href="{{ baseurl }}/css/style.css" type="text/css" media="screen, projection" id="cssfile"/>
-	{% for i in head_link %}
-        {% if i.type == "css" %}
-    <link rel="stylesheet" href="{{ baseurl }}/{{ i.url }}" type="text/css" media="screen, projection" id="cssfile"/>
-        {% else %}
-    <script type="text/javascript" src="{{ baseurl }}/{{ i.url }}"></script>
-        {% endif %}
-    {% endfor %}
+	{% for type, src in head_link %}{% if type == "css" %}<link rel="stylesheet" href="{{ baseurl }}{{ src }}" type="text/css" media="screen, projection" id="cssfile" />
+    {% else %}<script type="text/javascript" src="{{ baseurl }}{{ src }}"></script>
+    {% endif %}{% endfor %}
 </head>
 <body>
 	<div id="wrap">
@@ -27,6 +23,8 @@
 				<div class="description">{{ blog_subtitle }}</div>
 			</div>
 			<div id="header-right">
+				<div class="layout">
+				</div>
 				<div id="menu">
 					<li class="{% if is_home %}current_page_item{%else%}page_item{%endif%}"><a href="{{ baseurl }}/" title="{{ blog_title }}">首页</a></li>
 				</div>

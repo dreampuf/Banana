@@ -105,6 +105,34 @@ def extrac(obj, filter=None):
             result[i] = getattr(obj, i)
     return result
 
+def dump(obj):
+    out = []
+    out.append("%s:\n\n"%obj)
+    for i in dir(obj):
+        if i.startswith("_"):
+            continue
+        try:
+            out.append("   %s:  %s\n" % (i, getattr(obj, i)))
+        except:
+            pass
+    logging.info("".join(out))
+
+def processurl(p):
+    url = Config.posturl
+
+    mapper = { "%category%": p.category.title,
+               "%year%": p.created.year,
+               "%month%": p.created.month,
+               "%day%": p.created.day,
+               "%title%": p.title,
+               "%url%": p.url,
+               "%author%": p.author.username }
+
+    for key, val in mapper.items():
+        if url.find(key) != -1:
+            url = url.replace(key, str(val))
+
+    p.realurl = url
 
 class Event(object):
     _observers = {}
@@ -128,6 +156,12 @@ class Event(object):
         if cls._observers.has_key(etype):
             for observer in cls._observers:
                 observer(*args, **kw)
+
+class CommentStatus(object):
+    DISENABLE = "disenable"
+    ENABLE = "enable"
+    USERONLY = "useronly"
+
 class _ConfigProperty(Event):
 
     def __init__(self, name, default=None, useMemoryCache=True):
@@ -160,6 +194,9 @@ class Config(Event):
     charset = _ConfigProperty("charset", "utf-8")
     footer = _ConfigProperty("footer", "")
     headlink = _ConfigProperty("headlink", ["/css/style.css", "/js/jquery-1.4.4.min.js"])
+    posturl = _ConfigProperty("posturl", "%year%/%month%/%url%.html")
+    commentstatus = _ConfigProperty("commentstatus", CommentStatus.ENABLE)
+    commentneedcheck = _ConfigProperty("commentneedcheck", False)
 
 ##    _filter = ("title", "subtitle", "charset", "footer", "headlink")
     def __new__(cls, *args, **kw):
@@ -210,6 +247,25 @@ class BaseRequestHandler(webapp.RequestHandler, Event):
     def redirect_self(self):
         self.redirect(self.request.url)
 
+    def from_request(self, obj, fun=lambda x: x):
+        #TODO
+        '''update obj from self.request.parmas'''
+        src = self.request.params
+        for i in src.keys():
+            if hasattr(obj, i):
+                #logging.info("1")
+                o = getattr(obj, i)
+                if isinstance(o, int):
+                    #logging.info("2")
+                    setattr(obj, i, int(fun(o)))
+                elif isinstance(o, (str, unicode)):
+                    #logging.info("3")
+                    setattr(obj, i, fun(o))
+                else:
+                    #logging.info("4")
+                    setattr(obj, i, fun(o))
+        #dump(obj)
+
     def write(self, value):
         '''
         value : string
@@ -234,13 +290,13 @@ class BackRequestHandler(BaseRequestHandler):
                     "网站管理": [
                                 ("基本设置", "/admin/config"),
                                 ("用户管理", "/admin/user"),
-                                ("附件管理", "/admin/attachments")
+                                ("附件管理", "/admin/attachment")
                                 ],
                     "内容管理": [
                                 ("文章管理", "/admin/post"),
                                 ("分类管理", "/admin/category"),
-                                ("标签管理", "/admin/tags"),
-                                ("评论管理", "/admin/comments")
+                                ("标签管理", "/admin/tag"),
+                                ("评论管理", "/admin/comment")
                                 ]
                   }
 

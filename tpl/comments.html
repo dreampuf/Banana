@@ -1,105 +1,74 @@
 <!-- comments  -->
 
 <div id="comments-wrap">
-
-<?php 
-	if ('comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-		die ('Please do not load this page directly. Thanks!');
-        if (!empty($post->post_password)) { 
-            if ($_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) { 
-				?>
-				<p class="nocomments"><?php _e("This post is password protected. Enter the password to view comments."); ?><p>
-				<?php
-				return;
-            }
-        }
-		$commentalt = '';
- 		$commentcount = 1;
-?>
-
-	<h2 id="respond"><?php comments_number('暂无留言', '1条留言', '% 条留言' ); if($post->comment_status == "open") { ?><?php } ?></h2><span class="goto-comment"><a href="#commentform">我要留言</a></span>
-	<?php if ($comments) : ?>
-		<ul class="<?php _e($oddcomment); ?>">
-		<?php foreach ($comments as $comment) : ?>
-		<?php $comment_type = get_comment_type(); ?> <!--trackbacks / pingbacks-->
-		<?php if($comment_type == 'comment') { ?><!--trackbacks / pingbacks-->
-		<li id="comment-<?php echo $comment->comment_ID; ?>" class="<?php comment_type('comment','trackback','pingback'); ?>">
+	<h2 id="respond">{% if comments %}{{ comments|count }}{%else%}0{%endif%} 条留言</h2><span class="goto-comment"><a href="#commentform">我要留言</a></span>
+	{% if comments %}
+		<ul>
+		{% for ctype, created, nickname, hascheck, content in comments %}
+		{% if ctype == "comment" %}
+		<li id="comment-{{ created.strftime('%Y/%m/%d %H:%M') }}" class="{{ ctype }}">
 			<div class="commentleft">
-				<div class="commentcount"><?php echo $commentcount ?> F </div>
-				<div id="gravatar"><?php if (function_exists('get_avatar')) { echo get_avatar(get_comment_author_email(),'36'); } ?></div>
+				<div class="commentcount">{{ loop.index }} F </div>
+				<div id="gravatar"></div>
 			</div>
 			<div class="commentright">
-				<p class="header<?php echo $commentalt; ?>" > 	
-					<?php if ($comment->comment_type == "comment") comment_author_link();
-						  else {
-								strlen($comment->comment_author)?$author=substr($comment->comment_author,0,25)."&hellip":$author=substr($comment->comment_author,0,25);
-								echo '<a href="'.$comment->comment_author_url.'">'.$author.'</a>';
-						  }
-					?> &nbsp;|&nbsp; <?php the_time('Y/m/d H:i a') ?> &nbsp; <?php edit_comment_link('编辑','<span class="editlink">','</span>'); ?> 
+				<p class="header{{ loop.cycle(' alt', '') }}" >
+					{{ nickname }} | {{ created.strftime('%Y/%m/%d %H:%M') }}
 				</p>
-				<?php if ($comment->comment_approved == '0') : ?><p class="waiting"><em>您的留言正等待审核</em></p><?php endif; ?>
-				<?php if ($comment->comment_type == "comment") {?>
+				{% if not hascheck %}<p class="waiting"><em>您的留言正等待审核</em></p>
+				{% else %}
 				<div class="commenttext">
-					<?php comment_text() ?>	
+					{{ content }}
 				</div>
-			<?php } else {?>
-				<div class="commenttext">
-					<?php comment_text() ?>	
-				</div>
-			<?php } ?>
-			</div>	
+                {% endif %}
+			</div>
 		</li>
-		<?php
-		($commentalt == " alt")?$commentalt="":$commentalt=" alt";
-		$commentcount++;
-		?>
-		<?php } else { $trackback = true; } ?><!--trackbacks / pingbacks-->
-		<?php endforeach; ?>
+        {% endif %}
+        {% endfor %}
 		</ul>
-		
-	<?php if ($trackback == true) { ?> 
-		<h2>Trackbacks</h2> 
-		<ol> 
-			<?php foreach ($comments as $comment) : ?> 
-			<?php $comment_type = get_comment_type(); ?> 
-			<?php if($comment_type != 'comment') { ?> 
-				<li><?php comment_author_link() ?></li> 
-			<?php } ?> 
-			<?php endforeach; ?> 
-		</ol> 
-		<?php } ?>
-		<?php endif; ?>
-		
-		<?php if ($post->comment_status == "open") : ?>
-			<?php if (get_option('comment_registration') && !$user_ID) : ?>
-			<p>请 <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php the_permalink(); ?>">登陆</a> 评论</p>
-			<?php else : ?>
-			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+
+        {% if trackback %}
+		<h2>Trackbacks</h2>
+		<ol>
+			<?php foreach ($comments as $comment) : ?>
+			<?php $comment_type = get_comment_type(); ?>
+			<?php if($comment_type != 'comment') { ?>
+				<li><?php comment_author_link() ?></li>
+			<?php } ?>
+			<?php endforeach; ?>
+		</ol>
+		{% endif %}
+
+		{% if commentstatus and commentstatus != "disenable" %}
+			{% if commentstatus == "useronly" and not curuser is defined %}
+			<p>请 <a href="{{ siteurl }}/loging?redirect_to={{ realurl }}">登陆</a> 评论</p>
+			{% else %}
+			<form action="{{ siteurl }}/comments" method="post" id="commentform">
 			<div id="conmmentform">
 				<div id="conmmentforminfo">
-				<?php if ($user_ID) : ?>
-					<div class="info"><a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php">你好，<?php echo $user_identity; ?></a> | <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="<?php _e('Log out of this account') ?>">注销</a></div>
-					<?php else : ?>
-						<label class="conmmentform-title" for="author">昵称</label> <?php if ($req) echo " (必填)"; ?>
-						<div><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" tabindex="1" /></div>
-						<label class="conmmentform-title" for="email">Email</label>  <?php if ($req) echo " (必填，绝不公开)"; ?>
-						<div><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" tabindex="2" /></div> 
-						<label class="conmmentform-title" for="url">网站</label>
-						<div> <input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" tabindex="3" /></div>
-				<?php endif; ?>
+				{% if curuser %}
+					<div class="info"><a href="{{ baseurl }}/member">你好，{{ curuser.username }}</a> | <a href="{{ baseurl }}/login?action=logout" title="注销">注销</a></div>
+			    {% else %}
+					<label class="conmmentform-title" for="author">昵称</label> (必填)
+					<div><input type="text" name="author" id="author" value="" tabindex="1" /></div>
+					<label class="conmmentform-title" for="email">Email</label>  (必填，绝不公开)
+					<div><input type="text" name="email" id="email" value="" tabindex="2" /></div>
+					<label class="conmmentform-title" for="url">网站</label>
+					<div> <input type="text" name="url" id="url" value="" tabindex="3" /></div>
+				{% endif %}
 				</div>
 				<div id="conmmentformtext">
-					<label for="comment"  class="conmmentform-title">留言区</label> 
+					<label for="comment"  class="conmmentform-title">留言区</label>
 					<div><textarea name="comment" id="comment" rows="10" tabindex="4"></textarea></div>
-					<p><input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
+					<p><input type="hidden" name="comment_post_ID" value="{{ postkey }}" />
 					<input type="submit"  name="submit" value=" " class="comment-button" tabindex="5" /></p>
 				</div>
 			</div>
-			<?php do_action('comment_form', $post->ID); ?>
 			</form>
-		<?php endif; ?>
-	
-	<?php endif;  ?>
+            {% endif %}
+		{% endif %}
 
-</div> 
+	{% endif %}
+
+</div>
 <!-- /comments -->

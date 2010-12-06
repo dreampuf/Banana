@@ -1,48 +1,46 @@
-
-<div id="sidebar">
-	<div id="rss"><a href="<?php bloginfo('rss_url'); ?>"><div id="rss-pic"></div></a></div>
-	<?php include (TEMPLATEPATH . '/searchform.php'); ?>
-	<ul id="sidebarul">
-		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
-		<?php //wp_list_pages('title_li=<h3>Pages</h3>' ); ?>
-		<li>
-			<h3>文章分类categories</h3>    
-			<ul class="side-cat" >
-				<?php wp_list_cats('sort_column=name&optioncount=0&hierarchical=0'); ?>
-			</ul>   
-			<div class="clear"></div>    
-		</li>
-		
-		
-
-		<li>
-			<h3>热门文章</h3>
-			<ul>
-				<?php if (function_exists('get_most_viewed')): ?>    
-				<?php get_most_viewed('post', 10);  ?>    
-				<?php endif; ?>
-			</ul>
-		</li>	
-		
-		<li>
-		<?php wp_list_bookmarks('between=<br />&show_images=0&orderby=name&category_before=<div class="widget">&category_after=</div></div>& categorize=136&title_li=推荐内容&title_before=<h3 class="widget-header">&title_after=</h3><div class="widget-content">'); ?>
-		</li>
-		<li >
-			<h3>标签云</h3>
-			<ul><?php wp_tag_cloud('smallest=8&largest=16'); ?></ul>
-		</li>
-		<?php  if ( is_home() || is_page() ) { ?>
-			<li>
-				<h3><?php _e('Meta'); ?></h3>
-				<ul>
-					<?php wp_register(); ?>
-					<li><?php wp_loginout(); ?></li>
-					<li><a href="<?php bloginfo('rss2_url'); ?>">内容RSS</a></li>
-					<li><a href="<?php bloginfo('comments_rss2_url'); ?>">评论RSS</a></li>
-					<?php wp_meta(); ?>
-				</ul>
-			</li>
-		<?php } ?>
-		<?php endif; ?>
-	</ul>
-</div>
+
+
+<div id="sidebar">
+
+	<div id="rss"><a href="{{ baseurl + rss_url}}"><div id="rss-pic"></div></a></div>
+
+	{% include 'searchform.html' %}
+
+	<ul id="sidebarul">
+        {% if categorys %}
+		<li>
+			<h3>文章分类</h3>
+			<ul class="side-cat" >
+            {% for title, description, url, pcount in categorys %}
+            <li><a href="{{ baseurl }}/category/{{ url }}">{{ title }}<span class="article-nums"> ({{ pcount }})</span></a></li>
+            {% endfor %}
+			</ul>
+        <div class="clear"></div>
+		</li>
+        {% endif %}
+
+        {% if lastcomments %}
+		<li>
+			<h3>文章分类</h3>
+			<ul class="side-cat" >
+            {% for title, description, url, pcount in categorys %}
+            <li><a href="{{ baseurl }}/category/{{ url }}">{{ title }}<span class="article-nums"> ({{ pcount }})</span></a></li>
+            {% endfor %}
+			</ul>
+        <div class="clear"></div>
+		</li>
+        {% endif %}
+        {% if tags %}
+		<li >
+			<h3>标签云</h3>
+			<ul>
+            {% for i in tags %}
+            <li><a href="{{ baseurl }}/tags/{{ i.title }}" title="{{ i.description }}">{{ i.title }}<span class="article-nums"> ({{ i.postslen }})</span></a></li>
+            {% endfor %}
+            </ul>
+		</li>
+        {% endif %}
+	</ul>
+
+</div>
+
