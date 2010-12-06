@@ -1,0 +1,72 @@
+﻿{% extends "AdminBase.html" %}
+{% block maincontent %}
+<script type="text/javascript">
+$(function(){
+    $.each($("table"), function(n, i) {
+        $(i).bind("click", function(event) {
+            var iText = event.target.getAttribute("value"), iData = event.target.getAttribute("data");
+            if(iData == null) return ;
+            console.log(iText + ":" + iData);
+            if(iText == "修改") {
+                location.href = "{{ baseurl }}/admin/comment/" + iData + "?p={{ p.index }}";
+            } else if(iText == "删除") {
+                    $.ajax({
+                        type:"DELETE",
+                        url:"{{ baseurl }}/admin/comment/"+iData,
+                        data:{"user":iData},
+                        success:function(msg){
+                            if(msg == "ok") {
+                                $(event.target).parent().parent().remove();
+                            }
+                        },
+                        error:function(xhr, textStatus, errorThrown){
+                            alert("出错"+textStatus);
+                        }
+                    });
+            }
+        });
+    });
+});
+</script>
+<div class="box">
+<div class="inner">
+<form method="POST">
+<fieldset>
+	<legend>评论管理</legend>
+    {% if msg %}<div class="cell">{{ msg }}</div>{% endif %}
+    <div class="cell"><!--<input type="button" value="添加" onclick="location.href='{{ baseurl }}/admin/comment/new'" class="super normal button"> &nbsp;--></div>
+    <table cellpadding="1" cellspacing="0" border="0">
+    <thead><tr><td width="35">序号</td>
+               <td width="320">内容</td>
+               <td width="100" align="center">IP</td>
+               <td width="140" align="center">时间</td>
+               <td width="260" align="center">操作</td></tr></thead>
+    <tbody>
+    {% for i, content, ip, created, key in datas -%}
+    <tr>
+        <td width="35" align="center">
+            {{ i }}
+        </td>
+        <td width="300" align="left">
+            {{ content|truncate(42, True) }}
+        </td>
+        <td width="100" align="center">
+            {{ ip }}
+        </td>
+        <td width="140" align="left">
+            {{ created.strftime("%Y/%m/%d %H:%M:%S") }}
+        </td>
+        <td width="260" align="center">
+            <input type="button" value="回复" data="{{ key }}" class="super normal button">&nbsp;
+            <input type="button" value="修改" data="{{ key }}" class="super normal button">&nbsp;
+            <input type="button" value="删除" data="{{ key }}" class="super normal button">
+        </td>
+    </tr>
+    {%- endfor %}
+</tbody></table>
+    {% import 'macros.html' as macros %}{{ macros.pager(p, baseurl + "/admin/comment/") }}
+</fieldset>
+</form>
+</div>
+</div>
+{% endblock %}

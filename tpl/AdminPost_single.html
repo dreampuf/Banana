@@ -1,0 +1,112 @@
+﻿{% extends "AdminBase.html" %}
+{% block maincontent %}
+<script type="text/javascript">
+<!--
+$(document).ready(function()	{
+	// Add markItUp! to your textarea in one line
+	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+	$('.editor').markItUp(mySettings);
+
+	// You can add content from anywhere in your page
+	// $.markItUp( { Settings } );
+	$('.add').click(function() {
+ 		$.markItUp( { 	openWith:'<opening tag>',
+						closeWith:'<\/closing tag>',
+						placeHolder:"New content"
+					}
+				);
+ 		return false;
+	});
+    tds = $('table tbody tr td:contains("预览内容")');
+    tds.parent().hide()
+    $.each(tds, function(i, n){
+
+    });
+});
+-->
+</script>
+<div class="box">
+<div class="inner">
+<form method="POST">
+<fieldset>
+	<legend>{{ title }}</legend>
+    <table cellpadding="3" cellspacing="0" border="0">
+    <tbody><tr>
+        <td width="50" align="right">
+            标题
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="title" value="{{ post.title }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            分类
+        </td>
+        <td width="200" align="left">
+            <select name="category">
+            {% for i in cates %}<option value="{{ i.key() }}" {%if curcate and curcate.key() == i.key()%}selected="selected"{%endif%}>{{ i.title }}</option>{% endfor %}
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            URL别名
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="url" value="{{ post.url }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            创建时间
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="created" value="{{ post.created.strftime("%Y/%m/%d %H:%M:%S") }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            内容
+        </td>
+        <td align="left">
+            <textarea name="content" class="editor" cols="50" rows="20">{{ post.content }}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            预览内容
+        </td>
+        <td align="left">
+            <div style="width:600px"><textarea name="precontent" class="editor" cols="60" rows="20">{{ post.precontent }}</textarea><div>
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            标签
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="tag" value="{{ tag }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+        </td>
+        <td width="200" align="left">
+            <a onclick="tds.parent().toggle('slow');"><span class="clickable sky sl">显示预览</span></a>
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+        </td>
+        <td width="200" align="left">
+            <input type="submit" value="保存" class="super normal button">
+            <a href="{{ pre }}">返回</a>
+        </td>
+    </tr>
+</tbody></table>
+</fieldset>
+</form>
+</div>
+</div>
+{% endblock %}

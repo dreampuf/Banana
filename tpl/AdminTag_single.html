@@ -1,0 +1,46 @@
+﻿{% extends "AdminBase.html" %}
+{% block maincontent %}
+<div class="box">
+<div class="inner">
+<form method="POST">
+<fieldset>
+	<legend>标签管理</legend>
+    <table cellpadding="5" cellspacing="0" border="0">
+    <tbody><tr>
+        <td width="100" align="right">
+            标签标题
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="title" value="{{ tag.title }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            标签描述
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="description" value="{{ tag.description }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            文章总数
+        </td>
+        <td width="200" align="left">
+            <span class="fade">{% if tag.is_saved() %}{{ tag.posts|count }}{% else %}0{%endif%}</span>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+        </td>
+        <td width="200" align="left">
+            <input type="submit" value="保存" class="super normal button">
+            <a href="{{ pre }}">返回</a>
+        </td>
+    </tr>
+</tbody></table>
+</fieldset>
+</form>
+</div>
+</div>
+{% endblock %}

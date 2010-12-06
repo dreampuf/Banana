@@ -1,0 +1,87 @@
+﻿{% extends "AdminBase.html" %}
+{% block maincontent %}
+<div class="box">
+<div class="inner">
+<form method="POST">
+<fieldset>
+	<legend>评论管理</legend>
+    <table cellpadding="5" cellspacing="0" border="0">
+    <tbody>
+    {% if comment.author %}<tr>
+        <td width="100" align="right">
+            用户
+        </td>
+        <td width="200" align="left">
+            <a href="{{ baseurl }}/admin/user/{{ comment.author.key() }}">{{ comment.author.username }}</a>
+        </td>
+    </tr>{% endif %}
+    {% if comment.belong %}<tr>
+        <td width="100" align="right">
+            属于
+        </td>
+        <td width="200" align="left">
+            <a href="{{ baseurl }}/admin/post/{{ comment.belong.key() }}">{{ comment.belong.title }}</a>
+        </td>
+    </tr>{% endif %}
+    {% if comment.re %}<tr>
+        <td width="100" align="right">
+            回复
+        </td>
+        <td width="200" align="left">
+            <a href="{{ baseurl }}/admin/comment/{{ comment.re.key() }}"><span class="fade">{{ comment.re.content|truncate(42, True) }}</span></a>
+        </td>
+    </tr>{% endif %}
+    <tr>
+        <td width="100" align="right">
+            IP
+        </td>
+        <td width="200" align="left">
+            <span class="fade">{{ comment.ip }}</span>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            E-Mail
+        </td>
+        <td width="200" align="left">
+            <span class="fade">{{ comment.email }}</span>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            WebSite
+        </td>
+        <td width="200" align="left">
+            <span class="fade">{{ comment.email }}</span>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            时间
+        </td>
+        <td width="200" align="left">
+            <span class="fade">{{ comment.created.strftime("%Y/%m/%d %H:%M:%S") }}</span>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            内容
+        </td>
+        <td width="200" align="left">
+            <textarea name="content" class="editor" cols="50" rows="20">{{ comment.content }}</textarea>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+        </td>
+        <td width="200" align="left">
+            <input type="submit" value="保存" class="super normal button">
+            <a href="{{ pre }}">返回</a>
+        </td>
+    </tr>
+</tbody></table>
+</fieldset>
+</form>
+</div>
+</div>
+{% endblock %}
