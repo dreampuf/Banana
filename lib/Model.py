@@ -8,7 +8,7 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 #
-import pickle, logging, md5
+import pickle, logging, md5, os
 from google.appengine.ext import db
 from google.appengine.ext.db import Model as DBModel
 from google.appengine.api import memcache
@@ -23,6 +23,12 @@ def expand(ls, n = []):
 
 def toBlob(val):
     return db.Blob(val)
+
+def toLink(val):
+    return db.Link(val)
+
+def toEmail(val):
+    return db.Email(val)
 
 def md5pro(*args):
     hash = md5.new()
@@ -280,12 +286,12 @@ class Attachment(BaseModel):
 
     filename = db.StringProperty()
     filetype = db.StringProperty()
+    filesize = db.IntegerProperty(default=0)
     content = db.BlobProperty()
     created = db.DateTimeProperty(auto_now_add=True)
 
-    @classmethod
-    def toContent(cls, val):
-        return db.Blob(val)
+    def setfiletype(self, filename):
+        self.filetype = os.path.splitext(filename)[1][1:]
 
 
 

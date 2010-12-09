@@ -653,3 +653,7 @@ a.opo:hover {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
+
+.padding {
+    padding: 3px;
+}

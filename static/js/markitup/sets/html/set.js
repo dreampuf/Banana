@@ -1,14 +1,21 @@
-// ----------------------------------------------------------------------------
-// markItUp!
-// ----------------------------------------------------------------------------
-// Copyright (C) 2008 Jay Salvat
-// http://markitup.jaysalvat.com/
-// ----------------------------------------------------------------------------
-// Html tags
-// http://en.wikipedia.org/wiki/html
-// ----------------------------------------------------------------------------
-// Basic set. Feel free to add more tags
-// ----------------------------------------------------------------------------
+
+updiv = [];
+updiv.push('<div id="upfilediv" style="position:absolute; width:290px; height:70px; padding: 20 0 20 20px; top: 200px; left: 200px;">');
+updiv.push('<form method="post" action="/admin/attachments">');
+updiv.push('<input type="file" name="attachment" value="ÉÏ´«" />');
+updiv.push('</form>');
+updiv.push('</div>');
+updiv = updiv.join("");
+
+upfilefun = function(markitup) {
+    updiv = $(updiv);
+    $(document).append(updiv);
+
+	$.markItUp({ 	openWith:'<opening tag>',
+					closeWith:'<\/closing tag>',
+					placeHolder:"New content"
+	});
+}
 mySettings = {
 	onShiftEnter:	{keepDefault:false, replaceWith:'<br />\n'},
 	onCtrlEnter:	{keepDefault:false, openWith:'\n<p>', closeWith:'</p>\n'},
@@ -32,6 +39,8 @@ mySettings = {
 		{separator:'---------------' },
 		{name:'Picture', key:'P', replaceWith:'<img src="[![Source:!:http://]!]" alt="[![Alternative text]!]" />' },
 		{name:'Link', key:'L', openWith:'<a href="[![Link:!:http://]!]"(!( title="[![Title]!]")!)>', closeWith:'</a>', placeHolder:'Your text to link...' },
+        { name: 'Code', className: 'doc', openWith: '<pre><code>', closeWith: '</code></pre>', placeHolder: 'code here...' },
+        {name: 'Insert Video', className: 'video' },
 		{separator:'---------------' },
 		{name:'Clean', className:'clean', replaceWith:function(markitup) { return markitup.selection.replace(/<(.*?)>/g, "") } },
 		{name:'Preview', className:'preview', call:'preview' }

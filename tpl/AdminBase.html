@@ -1,25 +1,17 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head profile="http://gmpg.org/xfn/11">
-	<title>{% if title %}{{ title }} | {% endif %}{{ blog_title }}</title>
-	{% if not is_post %}<meta name="robots" content="index,follow" />{% else %}<meta name="robots" content="noindex,follow" />{% endif %}
-
-	<meta http-equiv="Content-Type" content="{{ charset }}" />
-	<meta name="generator" content="Macgoo {{ version }}" />
-	<link rel="shortcut icon" href="{{ baseurl }}/images/favicon.ico" />
-	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{{ baseurl }}{{ rss_url }}" />
-	<link rel="alternate" type="text/xml" title="RSS .92" href="{{ baseurl }}{{ rss_url }}" />
-	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="{{ baseurl }}{{ rss_url }}" />
-	<link rel="stylesheet" href="{{ baseurl }}/css/style.css" type="text/css" media="screen, projection" id="cssfile"/>
-	{% for type, src in head_link %}{% if type == "css" %}<link rel="stylesheet" href="{{ baseurl }}{{ src }}" type="text/css" media="screen, projection" id="cssfile" />
-    {% else %}<script type="text/javascript" src="{{ baseurl }}{{ src }}"></script>{% endif %}{% endfor %}
-    <style type="text/css">
-    #wrap{ margin:0 auto; padding:0; width:100%; background:url(/images/adminside-bg.gif) repeat-y left #f8f8f8;}
-    #main{width: 100%; }
-    #maincontent{ float:right; margin:0 0 0 -171px; padding:0; display:inline;width: 100%; }
-    #maincontent .forFlow{ margin:0 0 0 171px; float: none; width: auto; }
-    #sidebar{ float:left;  margin:10px; padding:0; width:150px; display:inline;  }
-    </style>
+<title>{% if title %}{{ title }} | {% endif %}{{ blog_title }}</title>
+<link rel="shortcut icon" href="{{ baseurl }}/images/favicon.ico" />
+{% for type, src in head_link %}{% if type == "css" %}<link rel="stylesheet" href="{{ baseurl }}{{ src }}" type="text/css" media="screen, projection" id="cssfile" />
+{% else %}<script type="text/javascript" src="{{ baseurl }}{{ src }}"></script>{% endif %}{% endfor %}
+<style type="text/css">
+#wrap{ margin:0 auto; padding:0; width:100%; background:url(/images/adminside-bg.gif) repeat-y left #f8f8f8;}
+#main{width: 100%; }
+#maincontent{ float:right; margin:0 0 0 -171px; padding:0; display:inline;width: 100%; }
+#maincontent .forFlow{ margin:0 0 0 171px; float: none; width: auto; }
+#sidebar{ float:left;  margin:10px; padding:0; width:150px; display:inline;  }
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -38,8 +30,8 @@
 		</div>
         <div id="main">
             <div id="maincontent"><div class="forFlow">
-                        {% block maincontent %}{% endblock %}
-            </div></div>
+                        {% block maincontent -%}{%- endblock %}
+</div></div>
         	<div id="sidebar">
                 <ul id="sidebarul">
                 {% for i in sitebar %}

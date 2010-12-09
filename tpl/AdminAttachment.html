@@ -1,4 +1,4 @@
-﻿{% extends "AdminBase.html" %}
+{% extends "AdminBase.html" %}
 {% block maincontent %}
 <script type="text/javascript">
 $(function(){
@@ -39,19 +39,23 @@ $(function(){
     <thead><tr><td width="35">序号</td>
                <td width="120">文件名</td>
                <td width="60" align="center">类型</td>
+               <td width="60" align="center">大小</td>
                <td width="60" align="center">所属</td>
                <td width="250" align="center">操作</td></tr></thead>
     <tbody>
-    {% for i, filename, filetype, belong, key in datas -%}
+    {% for i, filename, filetype, filesize, belong, key in datas -%}
     <tr>
         <td width="35" align="center">
             {{ i }}
         </td>
         <td width="120" align="left">
-            <a href="{{ baseurl }}/admin/attachment/{{ key }}">{{ filename }}</a>
+            <a href="{{ baseurl }}/attachment/{{ key }}">{{ filename }}</a>
         </td>
         <td width="60" align="center">
             {{ filetype }}
+        </td>
+        <td width="60" align="center">
+            {{ filesize|filesizeformat }}
         </td>
         <td width="60" align="center">
             <a href="{{ baseurl }}/admin/user/{{ belong.key() }}">{{ belong.username }}</a>

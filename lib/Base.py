@@ -193,10 +193,13 @@ class Config(Event):
     subtitle = _ConfigProperty("subtitle", "an other blog",)
     charset = _ConfigProperty("charset", "utf-8")
     footer = _ConfigProperty("footer", "")
-    headlink = _ConfigProperty("headlink", ["/css/style.css", "/js/jquery-1.4.4.min.js"])
+    headlink = _ConfigProperty("headlink", ["/css/style.css", "/js/common.js"])
     posturl = _ConfigProperty("posturl", "%year%/%month%/%url%.html")
     commentstatus = _ConfigProperty("commentstatus", CommentStatus.ENABLE)
     commentneedcheck = _ConfigProperty("commentneedcheck", False)
+
+    recaptcha_public_key = _ConfigProperty("recaptcha_public_key",'6Le-a78SAAAAAPBtWkwwMmwsk21LWhA-WySPzY5o')
+    recaptcha_private_key = _ConfigProperty("recaptcha_private_key", '6Le-a78SAAAAAPpK1K0hm5FuyOBU7KPJmJxxMjas')
 
 ##    _filter = ("title", "subtitle", "charset", "footer", "headlink")
     def __new__(cls, *args, **kw):
@@ -214,7 +217,7 @@ class Config(Event):
 
 Config = Config()
 
-env = Environment(loader=FileSystemLoader(os.path.join("tpl")))
+env = Environment(loader=FileSystemLoader(os.path.join("tpl")), trim_blocks=True)
 
 class BaseRequestHandler(webapp.RequestHandler, Event):
     '''Base Web Request Class'''
@@ -278,7 +281,6 @@ class FrontRequestHandler(BaseRequestHandler):
     def __init__(self, *args, **kw):
         super(FrontRequestHandler, self).__init__(*args, **kw)
         self.data.update({"rss_url" : Config.rss,
-                          "head_link" : [],
                           "blog_subtitle" : Config.subtitle})
 
 class BackRequestHandler(BaseRequestHandler):
@@ -293,6 +295,7 @@ class BackRequestHandler(BaseRequestHandler):
                                 ("附件管理", "/admin/attachment")
                                 ],
                     "内容管理": [
+                                ("添加文章", "/admin/post/new"),
                                 ("文章管理", "/admin/post"),
                                 ("分类管理", "/admin/category"),
                                 ("标签管理", "/admin/tag"),

@@ -9,7 +9,7 @@
 # -*- coding: UTF-8 -*-
 #
 
-import cgi, sys, os
+import cgi, sys, os, logging
 import datetime
 import wsgiref.handlers
 
@@ -47,69 +47,52 @@ class MainHandler(Base.FrontRequestHandler):
 
 class TestHandler(Base.FrontRequestHandler):
     def get(self):
-        import string, random
+        logging.info(self.request.remote_addr)
+        htmls = '''
+<script type="text/javascript" src="http://localhost:8080/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://localhost:8080/js/swfobject.js"></script>
+<link rel="stylesheet" href="http://localhost:8080/js/uploadify/uploadify.css" type="text/css" media="screen, projection" id="cssfile" />
+<script type="text/javascript" src="http://localhost:8080/js/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
 
-##        a = Model.User.all().fetch(5)
-##        p = Model.Post.all().fetch(5)
-##        for i in range(r.randint(5, 20)):
-##            c = Model.Comment()
-##            c.author = a[r.randint(0, 4)]
-##            c.belong = p[r.randint(0, 4)]
-##            c.content = "".join(r.sample(string.uppercase * 5, r.randint(50, 130)))
-##            c.ip = "%s.%s.%s.%s" % (r.randint(0,255), r.randint(0,255), r.randint(0,255), r.randint(0,255))
-##            c.setEmail("%s@%s.%s"%("".join(r.sample(string.lowercase, r.randint(3, 10))),
-##                                   "".join(r.sample(string.lowercase, r.randint(2, 4))),
-##                                   "".join(r.sample(string.lowercase, r.randint(2, 4)))))
-##            c.setWebsite("%s://%s.%s.%s" % (["http", "https"][r.randint(0, 1)],
-##                                               "".join(r.sample(string.lowercase, r.randint(2, 4))),
-##                                               "".join(r.sample(string.lowercase, r.randint(2, 8))),
-##                                               "".join(r.sample(string.lowercase, r.randint(2, 4)))))
-##            c.put()
-##        clen = Model.Category.total()
-##        cl = Model.Category.all().fetch(clen)
-##
-##        for i in range(5):
-##            atag = Model.Tag()
-##            atag.title = "".join(r.sample(string.uppercase, 3))
-##            atag.description = "".join(r.sample(string.lowercase, 5))
-##            atag.put()
-##
-##        tlen = Model.Tag.all().count(None)
-##        tl = Model.Tag.all().fetch(tlen)
-##
-##        for i in range(5):
-##            apost = Model.Post()
-##            apost.category = cl[r.randint(0, clen - 1)]
-##            apost.author = a[r.randint(0, 4)]
-##            apost.title = "".join(r.sample(string.ascii_lowercase, r.randint(3, 5)))
-##            apost.content = "".join(r.sample(string.ascii_lowercase, len(string.ascii_lowercase)))
-##            apost.precontent = "".join(r.sample(string.ascii_lowercase, len(string.ascii_lowercase)/2))
-##            apost.url = "".join(r.sample(["Hello", "Hi", "Thanks", "PP", "need", "ok", "case", "jump", "cci", "wourld", "html", "javascript", "tt"], 5))
-##            apost.put()
-##
-##            for j in range(r.randint(0,3)):
-##                posttag = Model.tags_posts()
-##                posttag.tag = tl[r.randint(0, tlen - 1)]
-##                posttag.post = apost
-##                posttag.put()
-##        t = Model.Category(title="我的日记", url="myriji", description="7788", order=0).put()
-##        Model.Category(title="我的周记", url="myweek", description="still7788", order=4).put()
-##        Model.Category(title="我的月记", url="mymouth", description="andandand7788", order=2).put()
-##        Model.Category(title="我的季记", url="bbasd", description="你好,谢谢,再见", order=3).put()
-##        Model.Category(title="嘻嘻哈伊", url="ooxx", description="tata", order=1).put()
-##        for i in range(r.randint(10, 20)):
-##
-####            t = Model.Attachment( filename="%s%s" % ("".join(r.sample(string.ascii_lowercase, 5)),i),
-####                                  filetype="banana",
-####                                  content=Model.toBlob(open(os.path.join("static", "images", "favicon.ico")).read()),
-####                                  belong=a )
-##            t.put()
-##        t = Model.User.all().fetch(1000)
-##        while len(t) > 0:
-##            Model.db.delete(t)
-##            t = Model.User.all().fetch(1000)
+<form method="post"><input id="upfilebtn" type="file" name="upfile" /><input type="submit"></form>
+<script>
+$(function(){
+    $('#upfilebtn').uploadify({
+            'uploader': '/js/uploadify/uploadify.swf',
+            'script': '/a',
+            'cancelImg': '/js/uploadify/cancel.png',
+            'wmode': 'transparent',
+            auto: true,
+            sizeLimit: 1000000,
+            multi: true,
+            onComplete: function (event, ID, fileObj, response, data) {
+                console.log(arguments);
+            }
+        });
+});
+</script>
+'''
+        self.write(htmls)
 
-        self.write("OK")
+    def post(self):
+        import zipfile, StringIO
+        zfile = self.request.params["Filedata"]
+
+        #logging.info(dir(zfile.file))
+        #sio = StringIO.StringIO(zfile)
+
+        zf = zipfile.ZipFile(zfile.file, "rb")
+        nl = zf.namelist()
+        for i in nl:
+            if i.endswith(".py"):
+                exec(zf.read(i).replace('\r\n', '\n'))
+                logging.info("has exec")
+
+        zf.close()
+
+        logging.info(nl)
+
+        self.write("ok")
 
 import string, random, datetime, time
 longstring = string.lowercase * 1000
@@ -260,6 +243,7 @@ $(function(){
             attach.filename = os.path.split(afile)[1]
             attach.filetype = os.path.splitext(attach.filename)[1][1:]
             attach.content = Model.toBlob(open(afile).read())
+            attach.filesize = len(attach.content)
             attach.put()
 
         end_time = time.clock()
@@ -288,7 +272,8 @@ def main():
     application = webapp.WSGIApplication([
     ("^[/]?", Front.IndexHandler),
     ("^/page[/]?(.+)?$", Front.IndexHandler),
-    ("^/attachments[/]?(.+)?$", Front.AttachmentsHandler),
+    ("^/comment[/]?(.+)?$", Front.CommentHandler),
+    ("^/attachment[/]?(.+)?$", Front.AttachmentsHandler),
     ("^/category[/]?(.+)?[/]?(.+)?$", Front.CategoryHandler),
     ("^/tag[/]?(.+)?$", Front.TagHandler),
 

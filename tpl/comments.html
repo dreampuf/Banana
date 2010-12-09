@@ -2,7 +2,7 @@
 
 <div id="comments-wrap">
 	<h2 id="respond">{% if comments %}{{ comments|count }}{%else%}0{%endif%} 条留言</h2><span class="goto-comment"><a href="#commentform">我要留言</a></span>
-	{% if comments %}
+	   {% if comments %}
 		<ul>
 		{% for ctype, created, nickname, hascheck, content in comments %}
 		{% if ctype == "comment" %}
@@ -26,7 +26,7 @@
         {% endif %}
         {% endfor %}
 		</ul>
-
+        {% endif %}
         {% if trackback %}
 		<h2>Trackbacks</h2>
 		<ol>
@@ -40,10 +40,11 @@
 		{% endif %}
 
 		{% if commentstatus and commentstatus != "disenable" %}
+            <p style="margin:5px 0; background:#FFCCCC; border:1px solid #FF3366; display:none;"><span id="errorshow">{{ error }}</span></p>
 			{% if commentstatus == "useronly" and not curuser is defined %}
-			<p>请 <a href="{{ siteurl }}/loging?redirect_to={{ realurl }}">登陆</a> 评论</p>
+			<p>请 <a href="{{ siteurl }}/loging?redirect={{ realurl }}">登陆</a> 评论</p>
 			{% else %}
-			<form action="{{ siteurl }}/comments" method="post" id="commentform">
+			<p><form action="{{ siteurl }}/comment" method="post" id="commentform">
 			<div id="conmmentform">
 				<div id="conmmentforminfo">
 				{% if curuser %}
@@ -59,16 +60,17 @@
 				</div>
 				<div id="conmmentformtext">
 					<label for="comment"  class="conmmentform-title">留言区</label>
-					<div><textarea name="comment" id="comment" rows="10" tabindex="4"></textarea></div>
-					<p><input type="hidden" name="comment_post_ID" value="{{ postkey }}" />
-					<input type="submit"  name="submit" value=" " class="comment-button" tabindex="5" /></p>
+					<div><textarea name="comment" id="comment" rows="10" tabindex="4">{{ lastcomment }}</textarea></div>
+					<p><input type="hidden" name="postkey" value="{{ postkey }}" />
+                    <input type="hidden" name="redirect" value="{{ realurl }}#commentform" />
+					<input type="submit"  name="submit" value=" " class="comment-button clickable" tabindex="5" /></p>
 				</div>
 			</div>
-			</form>
+			</form></p>
             {% endif %}
 		{% endif %}
 
-	{% endif %}
+
 
 </div>
 <!-- /comments -->

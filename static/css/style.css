@@ -9,6 +9,7 @@ a{ color:#2cacda; text-decoration:none;line-height:22px;}
 a:hover{ color:#0077AA;}
 .center{ text-align:center;}
 .clear{ clear:both; font-size:0px; height:0px;}
+.clickable{ cursor:pointer;}
 
 
 /*#wrap{ margin:0 auto; padding:0; width:900px; border-left:3px solid #424242; border-right:3px solid #424242; border-top:0px solid #e4e4e4; border-bottom:0px solid #e4e4e4; background:url(/images/side-bg.gif) repeat-y right #f8f8f8;}
@@ -60,7 +61,7 @@ a:hover{ color:#0077AA;}
 
 #comments-wrap{ margin:20px 15px; padding:0px;}
 	#comments-wrap h2{  margin:0px 10px 0 0; padding:0px; font-size:14px; color:#2cacda; display:inline; height:30px;}
-	.goto-comment{ padding:0 15px 0 8px; border-left:1px solid #898989; line-height:22px; background: url(/images/icons.gif) 52px -174px no-repeat; }
+	.goto-comment{ padding:0 15px 0 5px; border-left:1px solid #898989; line-height:22px; background: url(/images/icons.gif) 52px -174px no-repeat; }
 	.goto-comment a{color:#787878;}
 	.goto-comment a:hover{color:#85bf73;}
 	#comments-wrap ul{ margin:10px 0 20px 0;; padding:0; }
@@ -113,6 +114,6 @@ a:hover{ color:#0077AA;}
 
 #wrap{ margin:0 auto; padding:0; width:100%; background:url(/images/side-bg.gif) repeat-y right #f8f8f8;}
 #main{width: 100%;}
-#maincontent{ float:left; margin:0 0 0 -271px; padding:0; display:inline;width: 100%;}
+#maincontent{ float:left; margin:0 0 0 -271px; padding:0; display:inline;width: 100%; word-wrap: break-word; word-break: normal; }
 #maincontent .forFlow{ margin:0 0 0 271px;}
 #sidebar{ float:right;  margin:10px; padding:0; width:250px; display:inline;  }

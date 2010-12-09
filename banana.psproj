@@ -23,14 +23,18 @@ FileName=R:\Sites\banana\lib\ext\__init__.py
 
 [Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\lib\ext\cookies.py
+FileName=R:\Sites\banana\lib\ext\captcha.py
 
 [Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
+ClassName=TProjectFileNode
+FileName=R:\Sites\banana\lib\ext\cookies.py
+
+[Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\lib\ext\sessions.py
 
 [Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
-Count=3
+Count=4
 
 [Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
@@ -65,768 +69,769 @@ Name=static
 
 [Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0]
 ClassName=TProjectFolderNode
-Name=static
-
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
-ClassName=TProjectFolderNode
 Name=css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\css\admin.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\css\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
 Count=2
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0]
+ClassName=TProjectFileNode
+FileName=R:\Sites\banana\static\images\adminside-bg.gif
+
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\alignleft.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\alignright.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node3]
+ClassName=TProjectFileNode
+FileName=R:\Sites\banana\static\images\bg_blended.png
+
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\comment-button.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\comment-button-.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\commentform-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\commentinput-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\comments-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\comments-bg-hover.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\favicon.ico
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node11]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\foot-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node12]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\foot-wp.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node11]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node13]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\header-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node12]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node14]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\icons.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node13]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node15]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\layout1.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node14]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node16]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\layout2.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node15]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node17]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\layout3.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node16]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node18]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\layout4.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node17]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node19]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\layout5.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node18]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node20]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\line.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node19]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node21]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\line-deep.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node20]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node22]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\line-deep1.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node21]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node23]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\line-deep2.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node22]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node24]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\list.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node23]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node25]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\list-hover.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node24]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node26]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\menu-li.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node25]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node27]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\nav-top-icon.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node26]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node28]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\newtheme_38.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node27]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node29]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\newtheme_47.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node28]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node30]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\newtheme_49.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node29]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node31]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\newtheme_54.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node30]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node32]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\newtheme_65.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node31]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node33]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\newtheme_82.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node32]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node34]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\pagenavi-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node33]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node35]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\pagenavi-bg-on.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node34]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node36]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\rss.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node35]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node37]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\search-button.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node36]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node38]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\side-bg.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node37]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node39]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\images\style.gif
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1\ChildNodes]
-Count=38
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes]
+Count=40
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2]
 ClassName=TProjectFolderNode
 Name=js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=markitup
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=sets
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=bbcode
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\bold.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\clean.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\code.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\fonts.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\italic.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\link.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\list-bullet.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\list-item.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\list-numeric.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\picture.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\preview.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node11]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node11]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\quotes.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node12]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node12]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\stroke.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node13]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node13]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\images\underline.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
 Count=14
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\readme.txt
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\set.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\bbcode\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
 Count=4
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFolderNode
 Name=html
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\bold.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\clean.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\h1.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\h2.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\h3.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\h4.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\h5.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\h6.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\image.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\italic.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\link.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node11]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node11]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\list-bullet.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node12]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node12]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\list-item.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node13]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node13]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\list-numeric.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node14]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node14]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\paragraph.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node15]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node15]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\picture.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node16]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node16]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\preview.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node17]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node17]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\images\stroke.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
 Count=18
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\readme.txt
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\set.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\html\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1\ChildNodes]
 Count=4
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFolderNode
 Name=markdown
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\bold.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\code.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\h1.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\h2.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\h3.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\h4.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\h5.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\h6.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\italic.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\link.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\list-bullet.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node11]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node11]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\list-numeric.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node12]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node12]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\picture.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node13]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node13]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\preview.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node14]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node14]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\images\quotes.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes]
 Count=15
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\readme.txt
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\set.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\markdown\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2\ChildNodes]
 Count=4
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFolderNode
 Name=xbbcode
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\bold.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\clean.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\h1.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\h2.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\h3.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\h4.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\h5.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\h6.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\image.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\italic.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\link.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node11]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node11]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\list-bullet.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node12]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node12]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\list-item.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node13]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node13]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\list-numeric.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node14]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node14]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\paragraph.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node15]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node15]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\picture.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node16]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node16]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\preview.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node17]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes\Node17]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\images\stroke.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node0\ChildNodes]
 Count=18
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\set.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\sets\xbbcode\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3\ChildNodes]
 Count=3
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
 Count=4
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFolderNode
 Name=skins
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=jtageditor
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-container.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor-bbcode.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor-dotclear.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor-html.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor-markdown.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor-textile.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\bg-editor-wiki.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\handle.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\menu.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\images\submenu.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
 Count=11
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\readme.txt
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\jtageditor\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
 Count=3
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1]
 ClassName=TProjectFolderNode
 Name=markitup
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-container.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-bbcode.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-dotclear.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node4]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-html.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node5]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-json.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node6]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node6]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-markdown.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node7]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-textile.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node8]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node8]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-wiki.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node9]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node9]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\bg-editor-xml.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node10]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node10]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\handle.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node11]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node11]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\menu.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node12]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node12]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\images\submenu.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
 Count=13
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\markitup\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node1\ChildNodes]
 Count=2
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2]
 ClassName=TProjectFolderNode
 Name=simple
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0]
 ClassName=TProjectFolderNode
 Name=images
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\simple\images\handle.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\simple\images\menu.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\simple\images\submenu.png
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes]
 Count=3
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\skins\simple\style.css
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes]
 Count=2
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node1\ChildNodes]
 Count=3
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFolderNode
 Name=templates
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0]
-ClassName=TProjectFileNode
-FileName=R:\Sites\banana\static\js\markitup\templates\preview.css
-
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\templates\preview.html
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node1]
+ClassName=TProjectFileNode
+FileName=R:\Sites\banana\static\js\markitup\templates\preview.css
+
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes]
 Count=2
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node3]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node3]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\markitup\jquery.markitup.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes]
 Count=4
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node1]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node1]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\jquery-1.4.4.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node2]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node2]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\static\js\jquery-1.4.4.min.js
 
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes\Node2\ChildNodes]
-Count=3
-
-[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node0\ChildNodes]
+[Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes]
 Count=3
 
 [Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes]
-Count=1
+Count=3
 
 [Project\ChildNodes\Node0\ChildNodes\Node2]
 ClassName=TProjectFolderNode
@@ -936,42 +941,38 @@ FileName=R:\Sites\banana\tpl\footer.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node18]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\functions.html
+FileName=R:\Sites\banana\tpl\header.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node19]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\header.html
+FileName=R:\Sites\banana\tpl\index.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node20]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\index.html
+FileName=R:\Sites\banana\tpl\macros.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node21]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\macros.html
+FileName=R:\Sites\banana\tpl\page.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node22]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\page.html
+FileName=R:\Sites\banana\tpl\search.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node23]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\search.html
+FileName=R:\Sites\banana\tpl\searchform.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node24]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\tpl\searchform.html
-
-[Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node25]
-ClassName=TProjectFileNode
 FileName=R:\Sites\banana\tpl\sidebar.html
 
-[Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node26]
+[Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes\Node25]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\tpl\single.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node3\ChildNodes]
-Count=27
+Count=26
 
 [Project\ChildNodes\Node0\ChildNodes\Node4]
 ClassName=TProjectFileNode
@@ -979,14 +980,18 @@ FileName=R:\Sites\banana\app.yaml
 
 [Project\ChildNodes\Node0\ChildNodes\Node5]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\main.py
+FileName=R:\Sites\banana\HISTORY
 
 [Project\ChildNodes\Node0\ChildNodes\Node6]
+ClassName=TProjectFileNode
+FileName=R:\Sites\banana\main.py
+
+[Project\ChildNodes\Node0\ChildNodes\Node7]
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\README
 
 [Project\ChildNodes\Node0\ChildNodes]
-Count=7
+Count=8
 
 [Project\ChildNodes\Node1]
 ClassName=TProjectRunConfiguationsNode

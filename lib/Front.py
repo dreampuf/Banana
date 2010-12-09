@@ -13,7 +13,8 @@ from google.appengine.ext import db
 from google.appengine.ext import *
 from google.appengine.api import mail
 import Base, Model
-from Base import HtmlHelper, Config
+from Base import Config
+from lib.ext import captcha
 
 class IndexHandler(Base.FrontRequestHandler):
     '''
@@ -122,9 +123,76 @@ class AttachmentsHandler(Base.FrontRequestHandler):
                             else "application/octet-stream"
 
             self.response.headers["Content-Type"] = contype
-            logging.info("attachment; filename=%s" % attach.filename)
-            self.response.headers["Content-Disposition"] = str("filename=%s.%s" % (attach.filename, attach.filetype))
+
+            self.response.headers["Content-Disposition"] = str("filename=%s" % (attach.filename, ))
             self.write(attach.content)
+        else:
+            self.error(404)
+
+class CommentHandler(Base.FrontRequestHandler):
+    '''评论'''
+    def post(self, slug=None):
+        postkey = self.q("postkey")
+        redirect = self.q("redirect")
+        author = self.q("author")
+        email = self.q("email")
+        url = self.q("url")
+        content = self.q("comment")
+        recaptcha_challenge_field = self.q("recaptcha_challenge_field")
+        recaptcha_response_field = self.q("recaptcha_response_field")
+
+        if Config.commentstatus == Base.CommentStatus.DISENABLE:
+            self.redirect(redirect)
+
+        charep = captcha.submit( recaptcha_challenge_field,
+                                        recaptcha_response_field,
+                                        Config.recaptcha_private_key,
+                                        self.request.remote_addr )
+        if not charep.is_valid: #如果没有验证通过
+            self.session["error"] = "验证码错误!"
+            self.session["lastcomment"] = content
+            self.redirect(redirect)
+            return
+
+        p = Model.Post.get(postkey)
+        if p == None:
+            self.redirect(redirect)
+
+        error = []
+        curuser = self.session.get("curuser", None)
+        cment = Model.Comment()
+        if curuser == None: #如果不是登录用户
+            if Config.commentstatus != Base.CommentStatus.ENABLE: #如果不允许非登录用户评论
+                self.redirect(redirect)
+
+            if author.strip() == "":
+                error.append("用户名不能为空")
+
+            if email.strip() == "":
+                error.append("邮箱地址不能为空")
+
+            cment.nickname = author
+        else: #是登录用户
+            cment.author = curuser
+
+        if content.strip() == "":
+            error += "内容不能为空"
+
+        if len(error):
+            self.session["error"] = ",".join(error)
+            self.redirect(redirect)
+
+        cment.belong = p
+        cment.commenttype = Model.CommentType.COMMENT
+        cment.content = content
+        cment.ip = self.request.remote_addr
+        cment.email = Model.toEmail(email)
+        cment.website = Model.toLink(url)
+        if Config.commentneedcheck: #是否需要审核
+            cment.hascheck = False
+        cment.put()
+
+        self.redirect(redirect)
 
 class URLHandler(Base.FrontRequestHandler):
     '''
@@ -141,6 +209,12 @@ class URLHandler(Base.FrontRequestHandler):
             data["is_post"] = True
             data["title"] = post.title
             data["commentstatus"] = Config.commentstatus if post.enablecomment else Base.CommentStatus.DISENABLE
+            if self.session.get("lastcomment") == None:
+                data["lastcomment"] = self.session.get("lastcomment", "")
+                self.session["lastcomment"] = None
+            if self.session.get("error") != None:
+                data["error"] = self.session.get("error")
+                self.session["error"] = None
             if post.status == Model.PostStatus.PAGE: #如果是page
                 if post.enablecomment: #评论处理,并取得已评论数
                     cments = [(i.commenttype, i.created, i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]

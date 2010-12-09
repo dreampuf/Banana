@@ -77,7 +77,7 @@ class AdminUserHandler(Base.BackRequestHandler):
         pre = self.q("p")
 
         if slug != None and slug.lower() == "new":
-            nuser = Model.User(username="", password="", email="")
+            nuser = Model.User(username="", password="", email="a@a.com")
 
             self.render("AdminUser_single.html", { "user": nuser,
                                                     "title":"新增用户",
@@ -110,7 +110,7 @@ class AdminUserHandler(Base.BackRequestHandler):
         p = slug != None and slug.isdigit() and int(slug) or 1
         users = Model.User.fetch(p)
 
-        controls = [[ HtmlHelper.ForA("序号"), HtmlHelper.ForA("用户名", widti="15px"), HtmlHelper.ForA("上次登录时间"), HtmlHelper.ForA("操作") ]]
+##        controls = [[ HtmlHelper.ForA("序号"), HtmlHelper.ForA("用户名", widti="15px"), HtmlHelper.ForA("上次登录时间"), HtmlHelper.ForA("操作") ]]
         idgenerater = Base.idgen((p-1) * 20 + 1)
 
 ##        for i in users.data:
@@ -203,10 +203,27 @@ class AdminAttachmentHandler(Base.BackRequestHandler):
         attachments = Model.Attachment.fetch(p, fun=lambda x: x.order("-created"))
 
         idgenerater = Base.idgen((p-1) * 20 + 1)
-        datas = [(str(idgenerater.next()), i.filename, i.filetype, i.belong, i.key()) for i in attachments.data]
+        datas = [(str(idgenerater.next()), i.filename, i.filetype, i.filesize, i.belong, i.key()) for i in attachments.data]
         self.render("AdminAttachment.html", { "datas" : datas,
                                               "title":"附件管理",
                                               "p": attachments })
+
+    def post(self, slug=None):
+        user = Model.User.all().get()
+
+        filename = self.q("Filename")
+        filedata = self.q("Filedata")
+        #logging.info(dir(filedata))
+        fl = Model.Attachment()
+        fl.belong = user
+        fl.filename = filename
+        fl.setfiletype(filename)
+        fl.filesize = len(filedata)
+        fl.content = Model.toBlob(filedata)
+        fl.put()
+
+        logging.info(fl.key())
+        self.write(fl.key())
 
     def delete(self, slug=None):
         if slug !=None:
@@ -381,6 +398,9 @@ class AdminPostHandler(Base.BackRequestHandler):
             self.data["head_link"].append(("js", "/js/markitup/sets/html/set.js"))
             self.data["head_link"].append(("css", "/js/markitup/skins/jtageditor/style.css"))
             self.data["head_link"].append(("css", "/js/markitup/sets/html/style.css"))
+            self.data["head_link"].append(("js", "/js/swfobject.js"))
+            self.data["head_link"].append(("css", "/js/uploadify/uploadify.css"))
+            self.data["head_link"].append(("js", "/js/uploadify/jquery.uploadify.v2.1.4.min.js"))
 
             npost = Model.Post(title="", content="", precontent="", url="", tags = [])
 
@@ -396,6 +416,9 @@ class AdminPostHandler(Base.BackRequestHandler):
             self.data["head_link"].append(("js", "/js/markitup/sets/html/set.js"))
             self.data["head_link"].append(("css", "/js/markitup/skins/jtageditor/style.css"))
             self.data["head_link"].append(("css", "/js/markitup/sets/html/style.css"))
+            self.data["head_link"].append(("js", "/js/swfobject.js"))
+            self.data["head_link"].append(("css", "/js/uploadify/uploadify.css"))
+            self.data["head_link"].append(("js", "/js/uploadify/jquery.uploadify.v2.1.4.min.js"))
             try:
                 post = Model.Post.get(slug)
             except:
@@ -431,6 +454,7 @@ class AdminPostHandler(Base.BackRequestHandler):
                 category = Model.Category.get(fromq(self.q("category")))
                 p.category = category
                 p.url = fromq(self.q("url"))
+                Base.processurl(p)
                 p.created = datetime.datetime.now()
                 p.content = fromq(self.q("content"))
                 p.precontent = fromq(self.q("precontent"))
@@ -453,7 +477,7 @@ class AdminPostHandler(Base.BackRequestHandler):
                             rela.tag = t
                             rela.put()
             except:
-                logging.info("save fail in tag (%s,%s) case :%s" %(ntag.title, ntag.description, sys.exc_info()))
+                logging.info("save fail in Post case :%s" %(sys.exc_info(),))
         elif slug != None:
             try:
                 p = Model.Post.get(slug)

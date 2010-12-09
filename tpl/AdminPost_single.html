@@ -2,27 +2,52 @@
 {% block maincontent %}
 <script type="text/javascript">
 <!--
-$(document).ready(function()	{
-	// Add markItUp! to your textarea in one line
-	// $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
-	$('.editor').markItUp(mySettings);
+    fmap = {};
+    fmap[".jpg"] = true;
+    fmap[".gif"] = fmap[".jpge"] = fmap[".png"] = fmap[".ico"] = fmap[".bmp"] = fmap[".jpg"];
 
-	// You can add content from anywhere in your page
-	// $.markItUp( { Settings } );
-	$('.add').click(function() {
- 		$.markItUp( { 	openWith:'<opening tag>',
-						closeWith:'<\/closing tag>',
-						placeHolder:"New content"
-					}
-				);
- 		return false;
-	});
-    tds = $('table tbody tr td:contains("预览内容")');
-    tds.parent().hide()
-    $.each(tds, function(i, n){
+    $(document).ready(function () {
+        $('.editor').markItUp(mySettings);
+
+        tds = $('table tbody tr td:contains("预览内容")');
+        tds.parent().hide()
+
+        $('#upfilebtn').uploadify({
+            'uploader': '/js/uploadify/uploadify.swf',
+            'script': '/admin/attachment',
+            'cancelImg': '/js/uploadify/cancel.png',
+            'wmode': 'transparent',
+            auto: true,
+            sizeLimit: 1000000,
+            multi: true,
+            onComplete: function (event, ID, fileObj, response, data) {
+                $('form').append('<input type="hidden" name="attathments" value="' + response + '" />');
+                $('#upfileshow').append('<li data="' + response + '" fname="'+fileObj.name+'" ftype="' + fileObj.type + '" class="clickable"><a title="' + "插入文章中" + fileObj.name + '">' + fileObj.name + '</a></li>');
+            },
+            onError: function (e) {
+                //
+            }
+        });
+        $('#upfileshow li').live("click", function (e) {
+            var target = $(e.target).parent(),
+                data = target.attr("data"),
+                ftype = target.attr("ftype"),
+                fname = target.attr("fname");
+
+            $.markItUp(fmap[ftype] ? {
+                target: '.editor:first',
+                openWith: '<img title="',
+                closeWith: '" src="{{baseurl}}/attachment/' + data + '" \/>',
+                placeHolder: "a Image"
+            } : {
+                target: '.editor:first',
+                openWith: '<a title="' + fname + '" href="{{baseurl}}/attachment/' + data + '">',
+                closeWith: '<\/a>',
+                placeHolder: fname
+            });
+        });
 
     });
-});
 -->
 </script>
 <div class="box">
@@ -63,6 +88,15 @@ $(document).ready(function()	{
         </td>
         <td width="200" align="left">
             <input type="text" class="sl" name="created" value="{{ post.created.strftime("%Y/%m/%d %H:%M:%S") }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="50" align="right">
+            上传文件
+        </td>
+        <td width="200" align="left">
+            <input type="file" class="sl" name="upfile" id="upfilebtn" value="">
+            <div id="upfileshow" class="padding"></div>
         </td>
     </tr>
     <tr>
