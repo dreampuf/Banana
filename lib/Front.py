@@ -12,7 +12,7 @@ import logging, mimetypes, sys, os
 from google.appengine.ext import db
 from google.appengine.ext import *
 from google.appengine.api import mail
-import Base, Model
+import Base, Model, yui
 from Base import Config
 from lib.ext import captcha
 
@@ -20,6 +20,7 @@ class IndexHandler(Base.FrontRequestHandler):
     '''
     首页
     '''
+    @yui.client_cache()
     def get(self, slug=None):
         p = slug != None and slug.isdigit() and int(slug) or 1
 
@@ -122,9 +123,8 @@ class AttachmentsHandler(Base.FrontRequestHandler):
                             if mail.EXTENSION_MIME_MAP.has_key(attach.filetype) \
                             else "application/octet-stream"
 
-            self.response.headers["Content-Type"] = contype
-
-            self.response.headers["Content-Disposition"] = str("filename=%s" % (attach.filename, ))
+            self.response.header["Content-Type"] = contype
+            self.response.header["Content-Disposition"] = str("filename=%s" % (attach.filename, ))
             self.write(attach.content)
         else:
             self.error(404)
@@ -205,16 +205,18 @@ class URLHandler(Base.FrontRequestHandler):
         #url is post realurl
         post = Model.Post.all().filter("realurl =", slug).get()
         if post != None:
+            logging.info(post.key().id())
             data = {}
             data["is_post"] = True
             data["title"] = post.title
             data["commentstatus"] = Config.commentstatus if post.enablecomment else Base.CommentStatus.DISENABLE
-            if self.session.get("lastcomment") == None:
-                data["lastcomment"] = self.session.get("lastcomment", "")
-                self.session["lastcomment"] = None
+            if self.session.get("lastcomment") != None:
+                data["lastcomment"] = self.session.get("lastcomment")
+                del self.session["lastcomment"]
             if self.session.get("error") != None:
                 data["error"] = self.session.get("error")
-                self.session["error"] = None
+                del self.session["error"]
+
             if post.status == Model.PostStatus.PAGE: #如果是page
                 if post.enablecomment: #评论处理,并取得已评论数
                     cments = [(i.commenttype, i.created, i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]
@@ -235,6 +237,12 @@ class URLHandler(Base.FrontRequestHandler):
 
                 tplfile = "page.html"
             else : #否则只是普通POST
+                prev = Model.Post.all().order("created").filter("created <", post.created).get()
+                next = Model.Post.all().order("created").filter("created >", post.created).get()
+                if prev != None:
+                    data["prev"] = prev
+                if next != None:
+                    data["next"] = next
                 if post.enablecomment: #评论处理,并取得已评论数
                     #ctype, created, nickname, hascheck, content
                     cments = [(i.commenttype, i.created, i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]

@@ -20,7 +20,7 @@ from google.appengine.api import memcache
 from google.appengine.ext.webapp import template
 
 from ext.sessions import Session
-import Model
+import Model, yui
 
 from jinja2 import Environment, Template
 from jinja2.loaders import FileSystemLoader
@@ -219,7 +219,7 @@ Config = Config()
 
 env = Environment(loader=FileSystemLoader(os.path.join("tpl")), trim_blocks=True)
 
-class BaseRequestHandler(webapp.RequestHandler, Event):
+class BaseRequestHandler(yui.RequestHandler, Event):
     '''Base Web Request Class'''
     AfterGenerateHeadlink = "AfterGenerateHeadlink"
     def __init__(self, *args, **kw):
@@ -236,6 +236,7 @@ class BaseRequestHandler(webapp.RequestHandler, Event):
                       "head_link": headlink,
                       }
         self.session= Session()
+        self.set_content_type("text/html")
 
     def render(self, path, template_vals={}):
         self.data.update(template_vals)

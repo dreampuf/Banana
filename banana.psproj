@@ -60,8 +60,12 @@ FileName=R:\Sites\banana\lib\gaeunit.py
 ClassName=TProjectFileNode
 FileName=R:\Sites\banana\lib\Model.py
 
+[Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes\Node7]
+ClassName=TProjectFileNode
+FileName=R:\Sites\banana\lib\yui.py
+
 [Project\ChildNodes\Node0\ChildNodes\Node0\ChildNodes]
-Count=7
+Count=8
 
 [Project\ChildNodes\Node0\ChildNodes\Node1]
 ClassName=TProjectFolderNode
@@ -803,11 +807,11 @@ Name=templates
 
 [Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node0]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\static\js\markitup\templates\preview.html
+FileName=R:\Sites\banana\static\js\markitup\templates\preview.css
 
 [Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes\Node1]
 ClassName=TProjectFileNode
-FileName=R:\Sites\banana\static\js\markitup\templates\preview.css
+FileName=R:\Sites\banana\static\js\markitup\templates\preview.html
 
 [Project\ChildNodes\Node0\ChildNodes\Node1\ChildNodes\Node2\ChildNodes\Node0\ChildNodes\Node2\ChildNodes]
 Count=2

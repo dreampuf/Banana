@@ -20,6 +20,10 @@ handlers:
    #login: admin  # This is important if you deploy the test directory in production!
   script: lib/gaeunit.py
 
+- url: /mapreduce(/.*)?
+  login: admin
+  script: google/appengine/ext/mapreduce/main.py
+
 - url: .*
   script: main.py
 

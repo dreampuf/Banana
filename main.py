@@ -16,9 +16,9 @@ import wsgiref.handlers
 sys.path.append("lib")
 
 from google.appengine.ext import db
-from google.appengine.ext import webapp
+from google.appengine.ext.webapp import util
 
-from lib import Base, Model, Admin, Front
+from lib import Base, Model, Admin, Front, yui
 
 class MainHandler(Base.FrontRequestHandler):
     def get(self):
@@ -49,11 +49,6 @@ class TestHandler(Base.FrontRequestHandler):
     def get(self):
         logging.info(self.request.remote_addr)
         htmls = '''
-<script type="text/javascript" src="http://localhost:8080/js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="http://localhost:8080/js/swfobject.js"></script>
-<link rel="stylesheet" href="http://localhost:8080/js/uploadify/uploadify.css" type="text/css" media="screen, projection" id="cssfile" />
-<script type="text/javascript" src="http://localhost:8080/js/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
-
 <form method="post"><input id="upfilebtn" type="file" name="upfile" /><input type="submit"></form>
 <script>
 $(function(){
@@ -93,6 +88,22 @@ $(function(){
         logging.info(nl)
 
         self.write("ok")
+
+class SearchHandler(Base.FrontRequestHandler):
+    def get(self, slug=None):
+        htmls = '''
+<form method="post">
+<input type="text" name="search" value="your want search" /> <input type="submit" value="提交" />
+</form>
+'''
+        self.write(htmls)
+
+    def post(self, slug=None):
+        arg = self.q("search")
+
+        result = Model.Post.all().search(arg).fetch(1000)
+        for i in result:
+            self.write('<a href="%s">%s</a><br />'%(i.key(), i.title))
 
 import string, random, datetime, time
 longstring = string.lowercase * 1000
@@ -269,7 +280,7 @@ class InstallHandler(Base.FrontRequestHandler):
         pass
 
 def main():
-    application = webapp.WSGIApplication([
+    application = yui.WsgiApplication([
     ("^[/]?", Front.IndexHandler),
     ("^/page[/]?(.+)?$", Front.IndexHandler),
     ("^/comment[/]?(.+)?$", Front.CommentHandler),
@@ -277,6 +288,7 @@ def main():
     ("^/category[/]?(.+)?[/]?(.+)?$", Front.CategoryHandler),
     ("^/tag[/]?(.+)?$", Front.TagHandler),
 
+    ("^/search[/]?(.+)?$", SearchHandler),
     ("^/a[/]?$", TestHandler ),
     ("^/init[/]?$", DataProcessHandler),
 
@@ -291,8 +303,8 @@ def main():
     ("^/admin/comment[/]?(.+)?$", Admin.AdminCommentHandler),
 
     ("^/([\w\W]+)", Front.URLHandler)
-    ], debug=True)
-    wsgiref.handlers.CGIHandler().run(application)
+    ], default_response_class=yui.Response)
+    util.run_wsgi_app(application)
 
 if __name__ == '__main__':
     main()

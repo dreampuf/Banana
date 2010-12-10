@@ -251,6 +251,10 @@ class Post(BaseModel):
             self._ptags = [i.tag for i in self._tags.fetch(1000)]
         return self._ptags
 
+    @classmethod
+    def SearchableProperties(cls):
+        return [['title', 'content'], ['title'], search.ALL_PROPERTIES]
+
 class tags_posts(BaseModel):
     tag = db.ReferenceProperty(Tag, collection_name="_posts")
     post = db.ReferenceProperty(Post, collection_name="_tags")
