@@ -1,4 +1,4 @@
-﻿#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
 # Name:        administer
 # Author:      soddy
 # Created:     24/11/2010
@@ -65,7 +65,12 @@ class AdminConfigHandler(Base.BackRequestHandler):
         Config.charset = charset
         Config.headlink = headlink
         Config.footer = footer
-        Config.posturl = posturl
+        if Config.posturl != posturl:
+            Config.posturl = posturl
+            posts = Model.Post.all().fetch(1000)
+            for i in posts:
+                i.realurl = Base.processurl(i)
+                i.put()
         Config.commentstatus = commentstatus
         Config.commentneedcheck = commentneedcheck
 

@@ -21,10 +21,10 @@
 
         {% if lastcomments %}
 		<li>
-			<h3>文章分类</h3>
+			<h3>最近评论</h3>
 			<ul class="side-cat" >
-            {% for title, description, url, pcount in categorys %}
-            <li><a href="{{ baseurl }}/category/{{ url }}">{{ title }}<span class="article-nums"> ({{ pcount }})</span></a></li>
+            {% for url, content,created in lastcomments %}
+            <li><a href="{{ baseurl }}/{{ url }}#comment-{{ created.strftime("%Y/%m/%d %H:%M") }}" title="{{ created.strftime("%Y/%m/%d %H:%M") }}">{{ content }}</a></li>
             {% endfor %}
 			</ul>
         <div class="clear"></div>

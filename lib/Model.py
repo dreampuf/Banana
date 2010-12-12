@@ -298,8 +298,17 @@ class Attachment(BaseModel):
         self.filetype = os.path.splitext(filename)[1][1:]
 
 
+class Plugin(BaseModel):
+    enable = db.BooleanProperty(default=False)
 
-
+    pluginguid = db.StringProperty()
+    pluginname = db.StringProperty()
+    plugintype = db.StringProperty()
+    plugindescription = db.StringProperty()
+    pluginauthor = db.StringProperty()
+    pluginurl = db.LinkProperty()
+    pluginsize = db.IntegerProperty(default=0)
+    plugindata = db.BlobProperty()
 
 
 

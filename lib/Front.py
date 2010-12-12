@@ -12,7 +12,7 @@ import logging, mimetypes, sys, os
 from google.appengine.ext import db
 from google.appengine.ext import *
 from google.appengine.api import mail
-import Base, Model, yui
+import Base, Model, yui as SER
 from Base import Config
 from lib.ext import captcha
 
@@ -20,7 +20,7 @@ class IndexHandler(Base.FrontRequestHandler):
     '''
     首页
     '''
-    @yui.client_cache()
+    @SER.server_cache(60)
     def get(self, slug=None):
         p = slug != None and slug.isdigit() and int(slug) or 1
 
@@ -42,12 +42,15 @@ class IndexHandler(Base.FrontRequestHandler):
         cates = [(i.title, i.description, i.url, i.posts.count()) for i in cates]
 
         tags = Model.Tag.all().fetch(1000)
-        logging.info(datas)
         tags.sort(lambda x,y: -1 if x.postslen > y.postslen else 0 if x.postslen == y.postslen else 1)
+
+        cments = Model.Comment.all().order("-created").fetch(10)
+        cments = [(i.belong.realurl, i.content, i.created, ) for i in cments]
 
         self.render("index.html", { "is_home": True,
                                     "posts": datas,
                                     "categorys": cates,
+                                    "lastcomments": cments,
                                     "tags": tags[:20],
                                     "p": posts
                                   })
@@ -59,6 +62,7 @@ class CategoryHandler(Base.FrontRequestHandler):
     '''
     分类
     '''
+    @SER.server_cache(60)
     def get(self, slug=None, p=None):
         if slug == None:
             self.redirect("/")
@@ -185,7 +189,7 @@ class CommentHandler(Base.FrontRequestHandler):
         cment.belong = p
         cment.commenttype = Model.CommentType.COMMENT
         cment.content = content
-        cment.ip = self.request.remote_addr
+        cment.ip = self.request.client_ip
         cment.email = Model.toEmail(email)
         cment.website = Model.toLink(url)
         if Config.commentneedcheck: #是否需要审核
@@ -198,6 +202,7 @@ class URLHandler(Base.FrontRequestHandler):
     '''
     Router
     '''
+    @SER.server_cache(60)
     def get(self, slug=None):
         if slug == None:
             self.redirect("/")

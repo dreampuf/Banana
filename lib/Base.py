@@ -466,6 +466,21 @@ class HtmlHelper(object):
         return cls.For("button", text=text, **kw)
 
 
+class Plugin(Event):
+
+    def __init__(self):
+        super(Plugin, self).__init__()
+
+
+
+
+
+
+
+class Theme(Event):
+    def __init__(self):
+        super(Theme, self).__init__()
+
 
 
 

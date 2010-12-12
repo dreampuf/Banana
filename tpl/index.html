@@ -21,7 +21,7 @@
 					</div>
 				{% endfor %}
 				<div class="navigation">
-					<div class="pagenavi">{% import 'macros.html' as macros %}{% if not pagetag is defined %}{% set pagetag = "page/" %}{% endif %}{{ macros.pager(p, pagetag) }}</div>
+					<div class="pagenavi">{% import 'macros.html' as macros %}{% if not pagetag is defined %}{% set pagetag = "/page/" %}{% endif %}{{ macros.pager(p, pagetag) }}</div>
 				</div>
 			{% else %}
 				<h2 class="center">Not Found</h2>
