@@ -1,12 +1,12 @@
-﻿#-------------------------------------------------------------------------------
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#-------------------------------------------------------------------------------
 # Name:        Base
 # Author:      soddy
 # Created:     09/11/2010
 # Copyright:   (c) soddy 2010
 # Email:       soddyque@gmail.com
 #-------------------------------------------------------------------------------
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
 #
 
 import cgi, os, logging, sys
@@ -157,6 +157,44 @@ class Event(object):
             for observer in cls._observers:
                 observer(*args, **kw)
 
+ZERO_TIME_DELTA = datetime.timedelta(0)
+class LocalTimezone(datetime.tzinfo):
+	def utcoffset(self, dt):
+		return datetime.timedelta(hours=Config.localtimezone)
+
+	def dst(self, dt):
+		return ZERO_TIME_DELTA
+
+LOCAL_TIMEZONE = LocalTimezone()
+
+class UTC(datetime.tzinfo):
+	def utcoffset(self, dt):
+		return ZERO_TIME_DELTA
+
+	def dst(self, dt):
+		return ZERO_TIME_DELTA
+UTC = UTC()
+
+def ParserTime(dtstr, format = "%Y/%m/%d %H:%M:%S"):
+    return datetime.datetime.strptime(dtstr, format)
+
+def ParserLocalTimeToUTC(dtstr, format = "%Y/%m/%d %H:%M:%S"):
+    return ParserTime(dtstr, format).replace(tzinfo=LOCAL_TIMEZONE).astimezone(UTC) \
+                .replace(tzinfo=None) #fix in Google Engine App
+
+
+def LocalToUTC(dt):
+    if dt.tzinfo:
+        dt.replace(tzinfo=None)
+    return dt.replace(tzinfo=LOCAL_TIMEZONE).astimezone(UTC)
+
+def UTCtoLocal(dt):
+    if dt.tzinfo:
+        dt.replace(tzinfo=None)
+    return dt.replace(tzinfo=UTC).astimezone(LOCAL_TIMEZONE) \
+                .replace(tzinfo=None) #fix in Google Engine App
+
+
 class CommentStatus(object):
     DISENABLE = "disenable"
     ENABLE = "enable"
@@ -176,22 +214,24 @@ class _ConfigProperty(Event):
         Model.Setting.setValue(self.name, value, self.usememorycache)
 
 class Config(Event):
-    domain = os.environ['HTTP_HOST']
-    baseurl = "http://" + domain
-    lang = "zh-cn"
+    lang = "zh-CN"
     rootdir = os.path.split(os.path.abspath(sys.argv[0]))[0]
     version = "1.0"
-    rss = "/rss"
 
-##    title = Model.Setting.getValue("config_title", "Banana")
-##    subtitle = Model.Setting.getValue("config_subtitle", "an other blog")
-##    charset = Model.Setting.getValue("config_charset", "utf-8")
-##    footer = Model.Setting.getValue("config_footer", "")
-##    headlink = Model.Setting.getValue("config_headlink", ["/css/style.css", "/js/jquery-1.4.4.min.js"])
+    domain = _ConfigProperty("domain", os.environ['HTTP_HOST'])
+    #baseurl = "http://" + domain
 
+    localtimezone = _ConfigProperty("localtimezone", 8)
     title = _ConfigProperty("title", "Banana")
-    subtitle = _ConfigProperty("subtitle", "an other blog",)
+    subtitle = _ConfigProperty("subtitle", "an other blog")
+    author = _ConfigProperty("author", "Banana")
     charset = _ConfigProperty("charset", "utf-8")
+    feed = _ConfigProperty("feed", "feed")
+    feednumber = _ConfigProperty("feednumber", 20)
+    feedshowpre = _ConfigProperty("feedshowpre", False)
+    hub = _ConfigProperty("hub", ["http://pubsubhubbub.appspot.com/"])
+    indexnumber = _ConfigProperty("indexnumber", 20)
+    indexshowpre = _ConfigProperty("indexshowpre", True)
     footer = _ConfigProperty("footer", "")
     headlink = _ConfigProperty("headlink", ["/css/style.css", "/js/common.js"])
     posturl = _ConfigProperty("posturl", "%year%/%month%/%url%.html")
@@ -201,21 +241,14 @@ class Config(Event):
     recaptcha_public_key = _ConfigProperty("recaptcha_public_key",'6Le-a78SAAAAAPBtWkwwMmwsk21LWhA-WySPzY5o')
     recaptcha_private_key = _ConfigProperty("recaptcha_private_key", '6Le-a78SAAAAAPpK1K0hm5FuyOBU7KPJmJxxMjas')
 
-##    _filter = ("title", "subtitle", "charset", "footer", "headlink")
     def __new__(cls, *args, **kw):
         if not hasattr(cls, "_instance"):
             orig = super(Config, cls)
             cls._instence = orig.__new__(cls, *args, **kw)
         return cls._instence
 
-##    def __set__(self, attrname, value):
-##        logging.info("WWWWWWset setting.%s:%s" % (attrname, value))
-##        if hasattr(self, attrname) and attrname in _filter:
-##            logging.info("set setting.%s:%s" % (attrname, value))
-##            setattr(self, attrname, value)
-##            Model.Setting.setValue("config_%s" % attrname, value)
-
 Config = Config()
+Config.baseurl = "http://" + Config.domain
 
 env = Environment(loader=FileSystemLoader(os.path.join("tpl")), trim_blocks=True)
 
@@ -281,7 +314,7 @@ class FrontRequestHandler(BaseRequestHandler):
     '''Front Web Request Class'''
     def __init__(self, *args, **kw):
         super(FrontRequestHandler, self).__init__(*args, **kw)
-        self.data.update({"rss_url" : Config.rss,
+        self.data.update({"feed_url" : Config.feed,
                           "blog_subtitle" : Config.subtitle})
 
 class BackRequestHandler(BaseRequestHandler):

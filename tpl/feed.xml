@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="{{ charset }}"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+	xml:lang="{{ language }}"
+	xml:base="{{ baseurl }}">
+	<title>{{ title }}</title>
+	<id>{{ baseurl }}/{{ rss }}</id>
+	<subtitle>{{ subtitle }}</subtitle>
+	<link href="{{ baseurl }}/{{ rss }}" rel="self"/>
+{% for i in hubs %}
+    <link rel="hub" href="{{ i }}"/>
+{% endfor %}
+	<updated>{{ last_update.isoformat() }}</updated>
+	<author>
+		<name>{{ author }}</name>
+	</author>
+{% for title, authorname, id, realurl, created, content in posts %}
+	<entry>
+		<link href="{{ realurl }}"/>
+		<id>{{ id }}</id>
+		<title>{{ title }}</title>
+		<content type="html">{{ content }}</content>
+		<author>
+			<name>{{ authorname }}</name>
+		</author>
+		<updated>{{ created.isoformat() }}</updated>
+	</entry>
+{% endfor %}
+</feed>

@@ -1,20 +1,37 @@
-﻿#-------------------------------------------------------------------------------
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#-------------------------------------------------------------------------------
 # Name:        administer
 # Author:      soddy
 # Created:     24/11/2010
 # Copyright:   (c) soddy 2010
 # Email:       soddyque@gmail.com
 #-------------------------------------------------------------------------------
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
 #
-import logging, mimetypes, sys, os
-from google.appengine.ext import db
-from google.appengine.ext import *
-from google.appengine.api import mail
+import logging, sys, os, urllib
+from google.appengine.api import mail, memcache, urlfetch
+from django.utils import simplejson as json
 import Base, Model, yui as SER
 from Base import Config
 from lib.ext import captcha
+from datetime import datetime
+
+def urlview(handler):
+    def view_handler(*args, **kw):
+        url = args[1]
+        url = urllib.unquote(url)
+
+        view = memcache.get("views", namespace="Front")
+        if view == None:
+            view = {}
+        if not view.has_key(url):
+            view[url] = 0
+        view[url] += 1
+        memcache.set("views", view, namespace="Front")
+        return handler(*args, **kw)
+    return view_handler
+
+
 
 class IndexHandler(Base.FrontRequestHandler):
     '''
@@ -25,15 +42,15 @@ class IndexHandler(Base.FrontRequestHandler):
         p = slug != None and slug.isdigit() and int(slug) or 1
 
 ##        try:
-        posts = Model.Post.fetch(p, fun=lambda x: x.filter("status =", Model.PostStatus.NORMAL).order("-created"))
-
+        posts = Model.Post.fetch(p, plen=Config.indexnumber, fun=lambda x: x.filter("status =", Model.PostStatus.NORMAL).order("-created"))
+        isShowPre = Config.indexshowpre
         datas = [(i.url,
                   i.realurl,
                   i.title,
                   i.comments.count(),
-                  i.created,
+                  Base.UTCtoLocal(i.created),
                   i.views,
-                  i.precontent,
+                  i.precontent if isShowPre else i.content,
                   i.category.title,
                   i.author.username,
                   [tag.title for tag in i.tags]) for i in posts.data]
@@ -45,7 +62,7 @@ class IndexHandler(Base.FrontRequestHandler):
         tags.sort(lambda x,y: -1 if x.postslen > y.postslen else 0 if x.postslen == y.postslen else 1)
 
         cments = Model.Comment.all().order("-created").fetch(10)
-        cments = [(i.belong.realurl, i.content, i.created, ) for i in cments]
+        cments = [(i.belong.realurl, i.content, Base.UTCtoLocal(i.created), ) for i in cments]
 
         self.render("index.html", { "is_home": True,
                                     "posts": datas,
@@ -72,14 +89,15 @@ class CategoryHandler(Base.FrontRequestHandler):
                 self.error(404)
             else:
                 p = 1 if p == None else int(p) if p.isdigit() else 1
+                isShowPre = Config.indexshowpre
                 posts = Model.Post.fetch(p, fun=lambda x: x.filter("status =", Model.PostStatus.NORMAL).filter("category =", cate).order("-created"))
                 datas = [(i.url,
                           i.realurl,
                           i.title,
                           i.comments.count(),
-                          i.created,
+                          Base.UTCtoLocal(i.created),
                           i.views,
-                          i.precontent,
+                          i.precontent if isShowPre else i.content,
                           i.category.title,
                           i.author.username,
                           [tag.title for tag in i.tags]) for i in posts.data]
@@ -126,7 +144,7 @@ class AttachmentsHandler(Base.FrontRequestHandler):
             contype = mail.EXTENSION_MIME_MAP[attach.filetype] \
                             if mail.EXTENSION_MIME_MAP.has_key(attach.filetype) \
                             else "application/octet-stream"
-
+            self.response.header["Cache-Control"] = "max-age=900"
             self.response.header["Content-Type"] = contype
             self.response.header["Content-Disposition"] = str("filename=%s" % (attach.filename, ))
             self.write(attach.content)
@@ -198,19 +216,91 @@ class CommentHandler(Base.FrontRequestHandler):
 
         self.redirect(redirect)
 
+class FeedHandler(Base.FrontRequestHandler):
+    '''
+    Feed
+    '''
+    def get(self, slug=None):
+        self.set_content_type("atom")
+        if slug == None:
+            data = { "language": Config.lang,
+                     "title": Config.title,
+                     "subtitle": Config.subtitle,
+                     "rss": Config.feed,
+                     "last_update": Base.UTCtoLocal(datetime.now()),
+                     "author": Config.author,
+                     "hubs": Config.hub,
+                     "charset": Config.charset
+            }
+            posts = Model.Post.all().filter("status IN", (Model.PostStatus.NORMAL, Model.PostStatus.PAGE, Model.PostStatus.TOP)).order("-created").fetch(Config.feednumber)
+            isShowPre = Config.feedshowpre
+            posts = [( i.title,
+                       i.author.username,
+                       i.key().id(),
+                       i.realurl,
+                       Base.UTCtoLocal(i.created),
+                       i.precontent if isShowPre else i.content
+                     ) for i in posts]
+            data["posts"] = posts
+
+            self.render("feed.xml", data)
+
+
+class ToolHandler(Base.FrontRequestHandler):
+    '''
+    Unity
+    '''
+    def post(self, slug):
+        if slug == "analysispost":
+#            data = self.q("data")
+#            multi = self.q("multi") if self.q("multi") == "" else 0
+#            response = urlfetch.fetch(url="http://www.ftphp.com/scws/api.php",
+#                                      method=urlfetch.POST,
+#                                      payload=urllib.urlencode({"data":data,
+#                                                                "multi":multi,
+#                                                                "respond":"json",
+#                                                                "ignore": "yes"})
+#                                      )
+#            self.set_content_type("json")
+#            self.write(response.content)
+            pass
+        elif slug == "keyword":
+            data = self.q("data")
+            from lib.ext.keyword import keyword
+            result = keyword(data)
+            self.set_content_type("json")
+            self.write(json.write(result))
+        elif slug == "pinghub":
+            data = urllib.urlencode({'hub.url': "%s/%s"%(Config.baseurl, Config.feed), 'hub.mode': 'publish'})
+            rpcs = []
+            for i in Config.hub:
+                rpc = urlfetch.create_rpc()
+                urlfetch.make_fetch_call(rpc, i)
+                rpcs.append(rpc)
+            for i in rpcs:
+                i.wait()
+
+
+
 class URLHandler(Base.FrontRequestHandler):
     '''
     Router
     '''
-    @SER.server_cache(60)
+    @urlview
+    #@SER.server_cache(60)
     def get(self, slug=None):
         if slug == None:
             self.redirect("/")
 
+        if slug == Config.feed:
+            response = FeedHandler(self.request, self.response)
+            response.get()
+            return
         #url is post realurl
+        slug = urllib.unquote(slug)
+
         post = Model.Post.all().filter("realurl =", slug).get()
         if post != None:
-            logging.info(post.key().id())
             data = {}
             data["is_post"] = True
             data["title"] = post.title
@@ -224,7 +314,7 @@ class URLHandler(Base.FrontRequestHandler):
 
             if post.status == Model.PostStatus.PAGE: #如果是page
                 if post.enablecomment: #评论处理,并取得已评论数
-                    cments = [(i.commenttype, i.created, i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]
+                    cments = [(i.commenttype, Base.UTCtoLocal(i.created), i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]
                     cmentlen = len(cments)
                     data["comments"] = cments
                 else:
@@ -235,7 +325,7 @@ class URLHandler(Base.FrontRequestHandler):
                                  post.realurl,
                                  post.title,
                                  cmentlen,
-                                 post.created,
+                                 Base.UTCtoLocal(post.created),
                                  post.views,
                                  post.content,
                                  post.key() )
@@ -250,7 +340,7 @@ class URLHandler(Base.FrontRequestHandler):
                     data["next"] = next
                 if post.enablecomment: #评论处理,并取得已评论数
                     #ctype, created, nickname, hascheck, content
-                    cments = [(i.commenttype, i.created, i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]
+                    cments = [(i.commenttype, Base.UTCtoLocal(i.created), i.nickname, i.hascheck, i.content) for i in post.comments.order("created").fetch(1000)]
                     cmentlen = len(cments)
                     data["comments"] = cments
                 else:
@@ -260,7 +350,7 @@ class URLHandler(Base.FrontRequestHandler):
                                  post.realurl,
                                  post.title,
                                  cmentlen,
-                                 post.created,
+                                 Base.UTCtoLocal(post.created),
                                  post.views,
                                  post.content,
                                  post.author.username,

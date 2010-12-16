@@ -167,7 +167,7 @@ $(function () {
     $("#comment").focusin(function (e) {
         if (recaptchahasshow)
             return true;
-
+        //ABQIAAAAiskLDTuaT_tEJEH_2_1XQRT2yXp_ZAY8_ufC3CFXhHIE1NvwkxTskXOsVnBXDnwAv1Q1TQB4v_ifhw
         Recaptcha.create("6Le-a78SAAAAAPBtWkwwMmwsk21LWhA-WySPzY5o", "recaptchadiv", {
             theme: "clean"
         });

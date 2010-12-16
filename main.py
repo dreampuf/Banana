@@ -1,23 +1,18 @@
-﻿#-------------------------------------------------------------------------------
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#-------------------------------------------------------------------------------
 # Name:        Main
 # Author:      soddy
 # Created:     09/11/2010
 # Copyright:   (c) soddy 2010
 # Email:       soddyque@gmail.com
 #-------------------------------------------------------------------------------
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
 #
 
-import cgi, sys, os, logging
-import datetime
-import wsgiref.handlers
+import cgi, sys, os, logging, datetime
 
 sys.path.append("lib")
-
-from google.appengine.ext import db
 from google.appengine.ext.webapp import util
-
 from lib import Base, Model, Admin, Front, yui
 
 class MainHandler(Base.FrontRequestHandler):
@@ -92,9 +87,31 @@ $(function(){
 class SearchHandler(Base.FrontRequestHandler):
     def get(self, slug=None):
         htmls = '''
+<html>
+<head>
+<script src="http://blog.macgoo.com/js/common.js">
+$(function(){
+$.ajax({
+    type:"DELETE",
+    url:"/search",
+    data:{"user":"!23123"},
+    success:function(msg){
+        if(msg == "ok") {
+            console.log("ok");
+        }
+    },
+    error:function(xhr, textStatus, errorThrown){
+        alert("出错"+textStatus);
+    }
+});
+});
+</script>
+</head>
+<body>
 <form method="post">
 <input type="text" name="search" value="your want search" /> <input type="submit" value="提交" />
 </form>
+</html>
 '''
         self.write(htmls)
 
@@ -287,6 +304,8 @@ def main():
     ("^/attachment[/]?(.+)?$", Front.AttachmentsHandler),
     ("^/category[/]?(.+)?[/]?(.+)?$", Front.CategoryHandler),
     ("^/tag[/]?(.+)?$", Front.TagHandler),
+    ("^/tool[/]?(.+)?$", Front.ToolHandler),
+
 
     ("^/search[/]?(.+)?$", SearchHandler),
     ("^/a[/]?$", TestHandler ),
@@ -301,6 +320,8 @@ def main():
     ("^/admin/post[/]?(.+)?$", Admin.AdminPostHandler),
     ("^/admin/tag[/]?(.+)?$", Admin.AdminTagHandler),
     ("^/admin/comment[/]?(.+)?$", Admin.AdminCommentHandler),
+    ("^/admin/cron[/]?(.+)?$", Admin.AdminCronHandler),
+
 
     ("^/([\w\W]+)", Front.URLHandler)
     ], default_response_class=yui.Response)

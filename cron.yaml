@@ -1,0 +1,4 @@
+cron:
+- description: refresh view number
+  url: /admin/cron/refreshview
+  schedule: every 5 minutes

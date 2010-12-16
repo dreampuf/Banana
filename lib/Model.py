@@ -1,12 +1,12 @@
-﻿#-------------------------------------------------------------------------------
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+#-------------------------------------------------------------------------------
 # Name:        Model
 # Author:      soddy
 # Created:     09/11/2010
 # Copyright:   (c) soddy 2010
 # Email:       soddyque@gmail.com
 #-------------------------------------------------------------------------------
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
 #
 import pickle, logging, md5, os
 from google.appengine.ext import db
@@ -239,7 +239,7 @@ class Post(BaseModel):
     category = db.ReferenceProperty(Category, collection_name="posts")
     author = db.ReferenceProperty(User, collection_name="posts")
     title = db.StringProperty()
-    created = db.DateTimeProperty(auto_now=True)
+    created = db.DateTimeProperty()
     url = db.StringProperty()
     content = db.TextProperty()
     precontent = db.TextProperty()

@@ -1,11 +1,21 @@
 {% extends "AdminBase.html" %}
 {% block maincontent %}
 <script type="text/javascript">
-<!--
     fmap = {};
     fmap[".jpg"] = true;
     fmap[".gif"] = fmap[".jpge"] = fmap[".png"] = fmap[".ico"] = fmap[".bmp"] = fmap[".jpg"];
 
+
+    function urlnamecallback(result) {
+        result = result.data.translations[0].translatedText;
+        console.log(result);
+        result = result.replace(/&#(\d+);/, function(y,x){return String.fromCharCode(x);})
+                       .replace(/\s+/g, " ")
+                       .replace("?","")
+                       .replace("#","")
+                       .replace(/([^\w\s]|\?)\s/, "$1").split(" ").join("_");
+        $("input[name='url']").val(result);
+    }
     $(document).ready(function () {
         $('.editor').markItUp(mySettings);
 
@@ -47,8 +57,48 @@
             });
         });
 
+        $("input[name='title']").focusout(function(e){
+            var value = $(e.target).val();
+            $.getScript("https://www.googleapis.com/language/translate/v2?" +
+                $.param(
+                {"key": "AIzaSyD3_KyaIis7pklJsNXt_isG7QzkTYPmf2w",
+                "q": value,
+                "source": "zh-CN",
+                "target": "en",
+                "callback":"urlnamecallback"}
+                        )
+            );
+        });
+        $("#analysispost").click(function(e){
+            var clickfun = arguments.callee,
+                 postval = $("textarea[name='content']").val();
+            postval = $("<div>" + postval + "</div>").text();
+            $("#analysispost").unbind().children(":first").removeClass("clickable").removeClass("sky");
+            $.post("{{ baseurl }}/tool/keyword", {
+                "data" : postval
+            }, function(data){
+                data = data.slice(0, 6);
+                var tag = $("input[name='tag']");
+                if(tag.val() != "") {
+                    var old = tag.val();
+                    if(old.substr(-1) == ",") {
+                        old = old.replace(/,+$/, "");
+                    }
+                    old = old.split(",");
+                    for(var i=0,ilen=data.length; i <ilen; i++) {
+                        if(old.indexOf(data[i]) == -1) {
+                            old.push(data[i]);
+                        }
+                    }
+                    tag.val(old.join(","))
+                } else {
+                    tag.val(data.join(","))
+                }
+                $("#analysispost").click(clickfun).children(":first").addClass("clickable").addClass("sky");
+            });
+        });
+
     });
--->
 </script>
 <div class="box">
 <div class="inner">
@@ -120,7 +170,7 @@
             标签
         </td>
         <td width="200" align="left">
-            <input type="text" class="sl" name="tag" value="{{ tag }}">
+            <input type="text" class="sl" name="tag" value="{{ tag }}">  <a id="analysispost"><span class="clickable sky sl">提取关键字</span></a>
         </td>
     </tr>
     <tr>

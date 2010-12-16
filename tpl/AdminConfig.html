@@ -1,4 +1,4 @@
-﻿{% extends "AdminBase.html" %}
+{% extends "AdminBase.html" %}
 {% block maincontent %}
 <div class="box"><!--
 <div class="cell">
@@ -36,6 +36,22 @@ $(document).ready(function(){
     </tr>
     <tr>
         <td width="100" align="right">
+            站长名称
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="author" value="{{ author }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            站点域名
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="domain" value="{{ domain }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
             站点编码
         </td>
         <td width="200" align="left">
@@ -59,6 +75,63 @@ $(document).ready(function(){
                   <li>%author% : 作者</li>
                 </ul>
             </div>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            时区
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="localtimezone" value="{{ localtimezone }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            Feed地址
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="feed" value="{{ feed }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            Feed条数
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="feednumber" value="{{ feednumber }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            Feed文章显示摘要
+        </td>
+        <td width="200" align="left">
+             <input name="feedshowpre" type="checkbox" value="True" {%if feedshowpre %}checked="checked"{%endif%} />
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            PubSubHubbub
+        </td>
+        <td width="200" align="left">
+            <textarea class="mlt" name="hub">{{ hub }}</textarea>
+            <span class="fade">用于更新feed时主动通知订阅者,<a href="http://code.google.com/p/pubsubhubbub/">关于PubSubHubbub</a><br />每行一个</span>
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            首页显示数量
+        </td>
+        <td width="200" align="left">
+            <input type="text" class="sl" name="indexnumber" value="{{ indexnumber }}">
+        </td>
+    </tr>
+    <tr>
+        <td width="100" align="right">
+            首页文章显示摘要
+        </td>
+        <td width="200" align="left">
+             <input name="indexshowpre" type="checkbox" value="True" {%if indexshowpre%}checked="checked"{%endif%} />
         </td>
     </tr>
     <tr>

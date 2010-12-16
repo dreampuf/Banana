@@ -11,9 +11,10 @@ $(function(){
                 location.href = "{{ baseurl }}/admin/user/" + iData + "?p={{ p.index }}";
             } else if(iText == "删除") {
                     $.ajax({
-                        type:"DELETE",
+                        type:"POST",
                         url:"{{ baseurl }}/admin/user/"+iData,
-                        data:{"user":iData},
+                        data:{"action":"delete",
+                              "user":iData},
                         success:function(msg){
                             if(msg == "ok") {
                                 $(event.target).parent().parent().remove();

@@ -6,14 +6,14 @@ $(function(){
         $(i).bind("click", function(event) {
             var iText = event.target.getAttribute("value"), iData = event.target.getAttribute("data");
             if(iData == null) return ;
-            console.log(iText + ":" + iData);
             if(iText == "修改") {
                 location.href = "{{ baseurl }}/admin/category/" + iData + "?p={{ p.index }}";
             } else if(iText == "删除") {
                     $.ajax({
-                        type:"DELETE",
+                        type:"POST",
                         url:"{{ baseurl }}/admin/category/"+iData,
-                        data:{"user":iData},
+                        data:{"action": "delete",
+                               "user":iData},
                         success:function(msg){
                             if(msg == "ok") {
                                 $(event.target).parent().parent().remove();

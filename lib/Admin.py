@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
 # Name:        administer
 # Author:      soddy
@@ -5,14 +7,14 @@
 # Copyright:   (c) soddy 2010
 # Email:       soddyque@gmail.com
 #-------------------------------------------------------------------------------
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
 #
-import logging, sys, datetime
+import logging, sys, datetime, traceback
 from google.appengine.ext import db
-from google.appengine.ext import *
+from google.appengine.api import memcache
+from django.utils import simplejson
 import Base, Model
 from Base import HtmlHelper, Config
+
 
 def fromq(v):
     '''From the v return v if v != "",else return None if v == ""'''
@@ -45,9 +47,18 @@ class AdminConfigHandler(Base.BackRequestHandler):
             "footer": Config.footer,
             "posturl": Config.posturl,
             "commentstatus": Config.commentstatus,
-            "commentneedcheck": Config.commentneedcheck
+            "commentneedcheck": Config.commentneedcheck,
+            "localtimezone": Config.localtimezone,
+            "author": Config.author,
+            "feed": Config.feed,
+            "feednumber": Config.feednumber,
+            "feedshowpre": Config.feedshowpre,
+            "indexnumber": Config.indexnumber,
+            "indexshowpre": Config.indexshowpre,
+            "hub": "\n".join(Config.hub),
+            "domain": Config.domain
         }
-        logging.info(str(Config.commentneedcheck))
+
         self.render("AdminConfig.html", data)
 
     def post(self):
@@ -55,24 +66,48 @@ class AdminConfigHandler(Base.BackRequestHandler):
         subtitle = fromq(self.q("blogsubtitle"))
         charset = fromq(self.q("charset"))
         headlink = fromq(self.q("headlink").replace("\r", "").split("\n"))
+        hub = fromq(self.q("hub").replace("\r", "").split("\n"))
         footer = fromq(self.q("footer"))
         posturl = fromq(self.q("posturl"))
         commentstatus = fromq(self.q("commentstatus"))
         commentneedcheck = fromq(self.q("commentneedcheck")) == "True"
+        localtimezone = int(self.q("localtimezone")) if self.q("localtimezone").isdigit() else 8
+        author = fromq(self.q("author"))
+        feed = fromq(self.q("feed"))
+        feednumber = int(self.q("feednumber")) if self.q("feednumber").isdigit() else 20
+        feedshowpre = fromq(self.q("feedshowpre")) == "True"
+        indexnumber = int(self.q("indexnumber")) if self.q("indexnumber").isdigit() else 20
+        indexshowpre = fromq(self.q("indexshowpre")) == "True"
+        domain = self.q("domain")
+
 
         Config.title = title
         Config.subtitle = subtitle
         Config.charset = charset
         Config.headlink = headlink
         Config.footer = footer
+        Config.localtimezone = localtimezone
         if Config.posturl != posturl:
             Config.posturl = posturl
+            i = 0;
             posts = Model.Post.all().fetch(1000)
-            for i in posts:
-                i.realurl = Base.processurl(i)
-                i.put()
+            postslen = len(posts)
+            while postslen > 0:
+                for p in posts:
+                    p.realurl = Base.processurl(p)
+                    p.put()
+                i += postslen
+                posts = Model.Post.all().fetch(1000, offset=i)
         Config.commentstatus = commentstatus
         Config.commentneedcheck = commentneedcheck
+        Config.author = author
+        Config.feed = feed
+        Config.feednumber = feednumber
+        Config.feedshowpre = feedshowpre
+        Config.indexnumber = indexnumber
+        Config.indexshowpre = indexshowpre
+        Config.hub = hub
+        Config.domain = domain
 
 
         self.redirect_self()
@@ -140,7 +175,6 @@ class AdminUserHandler(Base.BackRequestHandler):
 
     def post(self, slug=None):
         logging.info(slug)
-        logging.info(self.request.params)
         if slug == None or slug == "":
             self.redirect("/admin/user")
         if slug == "new":
@@ -155,6 +189,9 @@ class AdminUserHandler(Base.BackRequestHandler):
         else:
             try:
                 user = Model.User.get(slug)
+                action = self.q("action")
+                if action == "delete" and user != None:
+                    user.delete()
                 user.username = fromq(self.q("username"))
                 user.password = fromq(self.q("password"))
                 user.email = fromq(self.q("email"))
@@ -214,6 +251,13 @@ class AdminAttachmentHandler(Base.BackRequestHandler):
                                               "p": attachments })
 
     def post(self, slug=None):
+        action = self.q("action")
+        if action == "delete" and slug != None:
+            fl = Model.Attachment.get(slug)
+            if fl != None:
+                fl.delete()
+                self.write("ok")
+                return
         user = Model.User.all().get()
 
         filename = self.q("Filename")
@@ -296,13 +340,24 @@ class AdminCategoryHandler(Base.BackRequestHandler):
                 logging.info("save fail in category (%s,%s,%s)" %(ncat.title, ncat.description, ncat.url))
         elif slug != None:
             try:
-                ncat = Model.Category.get(slug)
-                ncat.title = fromq(self.q("title"))
-                ncat.description = fromq(self.q("description"))
-                ncat.url = fromq(self.q("url"))
-                ncat.order = int(fromq(self.q("order")))
+                action = self.q("action")
 
-                ncat.put()
+                ncat = Model.Category.get(slug)
+                if action == "delete" and ncat != None:
+#                    n = 0
+#                    posts = Model.Post.all().filter("category =", ncat).fetch(1000)
+#                    plen = len(posts)
+#                    if plen > 0:
+#                        for
+                    ncat.delete()
+                    self.write("ok")
+                    return
+                else:
+                    ncat.title = fromq(self.q("title"))
+                    ncat.description = fromq(self.q("description"))
+                    ncat.url = fromq(self.q("url"))
+                    ncat.order = int(fromq(self.q("order")))
+                    ncat.put()
             except:
                 logging.info("update fail in category (%s,%s,%s)" %(ncat.title, ncat.description, ncat.url))
 
@@ -369,11 +424,16 @@ class AdminTagHandler(Base.BackRequestHandler):
                 logging.info("save fail in tag (%s,%s) case :%s" %(ntag.title, ntag.description, sys.exc_info()))
         elif slug != None:
             try:
+                action = self.q("action")
                 ntag = Model.Tag.get(slug)
-                ntag.title = fromq(self.q("title"))
-                ntag.description = fromq(self.q("description"))
-
-                ntag.put()
+                if action == "delete":
+                    ntag.delete()
+                    self.write("ok")
+                    return
+                else:
+                    ntag.title = fromq(self.q("title"))
+                    ntag.description = fromq(self.q("description"))
+                    ntag.put()
             except:
                 logging.info("update fail in tag (%s,%s) case:%s" %(ntag.title, ntag.description, sys.exc_info()))
 
@@ -383,7 +443,16 @@ class AdminTagHandler(Base.BackRequestHandler):
         if slug !=None:
             try:
                 t = Model.Tag.get(slug)
-                t.delete()
+                if t != None:
+                    hasUseTag = Model.tags_posts.all().filter("tag =", t).fetch(1000)
+                    tlen = len(hasUseTag)
+                    n = 0
+                    while tlen > 0:
+                        Model.tags_posts.deletes(hasUseTag)
+                        hasUseTag = Model.tags_posts.all().filter("tag =", t).fetch(1000, n)
+                        n += tlen
+                        tlen = len(hasUseTag)
+                    t.delete()
             except:
                 self.write("error")
                 return
@@ -406,8 +475,9 @@ class AdminPostHandler(Base.BackRequestHandler):
             self.data["head_link"].append(("js", "/js/swfobject.js"))
             self.data["head_link"].append(("css", "/js/uploadify/uploadify.css"))
             self.data["head_link"].append(("js", "/js/uploadify/jquery.uploadify.v2.1.4.min.js"))
+            self.data["head_link"].append(("js", "/js/keyword.js"))
 
-            npost = Model.Post(title="", content="", precontent="", url="", tags = [])
+            npost = Model.Post(title="", content="", precontent="", url="", tags = [], created=Base.UTCtoLocal(datetime.datetime.now()))
 
             self.render("AdminPost_single.html", { "post": npost,
                                                    "cates": Model.Category.all().fetch(1000),
@@ -424,12 +494,14 @@ class AdminPostHandler(Base.BackRequestHandler):
             self.data["head_link"].append(("js", "/js/swfobject.js"))
             self.data["head_link"].append(("css", "/js/uploadify/uploadify.css"))
             self.data["head_link"].append(("js", "/js/uploadify/jquery.uploadify.v2.1.4.min.js"))
+            self.data["head_link"].append(("js", "/js/keyword.js"))
             try:
                 post = Model.Post.get(slug)
             except:
                 self.error(404)
                 return
             tags = ",".join([i.title for i in post.tags])
+            post.created = Base.UTCtoLocal(post.created)
             self.render("AdminPost_single.html", { "issingle": issingle,
                                                    "cates": Model.Category.all().fetch(1000),
                                                    "curcate": post.category,
@@ -444,7 +516,7 @@ class AdminPostHandler(Base.BackRequestHandler):
         posts = Model.Post.fetch(p, fun=lambda x: x.order("-created"))
         idgenerater = Base.idgen((p-1) * 20 + 1)
 
-        datas = [(str(idgenerater.next()), i.title, i.category.title, i.category.key(), i.created, i.key()) for i in posts.data]
+        datas = [(str(idgenerater.next()), i.title, i.category.title, i.category.key(), Base.UTCtoLocal(i.created), i.key()) for i in posts.data]
 
         self.render("AdminPost.html", { "datas" : datas,
                                         "title": "文章管理",
@@ -460,7 +532,7 @@ class AdminPostHandler(Base.BackRequestHandler):
                 p.category = category
                 p.url = fromq(self.q("url"))
                 Base.processurl(p)
-                p.created = datetime.datetime.now()
+                p.created = Base.ParserLocalTimeToUTC(self.q("created"))
                 p.content = fromq(self.q("content"))
                 p.precontent = fromq(self.q("precontent"))
                 p.put()
@@ -482,28 +554,37 @@ class AdminPostHandler(Base.BackRequestHandler):
                             rela.tag = t
                             rela.put()
             except:
-                logging.info("save fail in Post case :%s" %(sys.exc_info(),))
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                logging.info("save fail in Post case :%s" %(traceback.format_exception(exc_type,
+                                                                                            exc_value,
+                                                                                            exc_traceback), ))
         elif slug != None:
             try:
                 p = Model.Post.get(slug)
                 if p == None:
                     self.redirect("/admin/post")
                     return
+                action = self.q("action")
+                if action == "delete":
+                    p.delete()
+                    self.write("ok")
+                    return
+                else:
+                    p.title = fromq(self.q("title"))
+                    p.author = Model.User.all().get() #TODO
+                    category = Model.Category.get(fromq(self.q("category")))
+                    p.category = category
+                    p.url = fromq(self.q("url"))
+                    Base.processurl(p)
+                    p.created = Base.ParserLocalTimeToUTC(self.q("created"))
+                    p.content = fromq(self.q("content"))
+                    p.precontent = fromq(self.q("precontent"))
+                    p.put()
 
-                p.title = fromq(self.q("title"))
-                p.author = Model.User.all().get() #TODO
-                category = Model.Category.get(fromq(self.q("category")))
-                p.category = category
-                p.url = fromq(self.q("url"))
-                Base.processurl(p)
-                p.created = datetime.datetime.now()
-                p.content = fromq(self.q("content"))
-                p.precontent = fromq(self.q("precontent"))
-                p.put()
-
-                tags = fromq(self.q("tag")).split(",")
-                if len(tags) == 1 and tags[0] == "":
-                    pass
+                tags = fromq(self.q("tag"))
+                if tags == None:
+                    ralas = Model.tags_posts.all().filter("post =", p).fetch(1000)
+                    Model.tags_posts.deletes(ralas)
                 else:
                     for i in tags:
                         t = Model.Tag.all().filter("title =", i).get()
@@ -519,7 +600,10 @@ class AdminPostHandler(Base.BackRequestHandler):
                             rela.put()
 
             except:
-                logging.info("update fail in tag (%s,%s) case:%s" %(ntag.title, ntag.description, sys.exc_info()))
+                exc_type, exc_value, exc_traceback = sys.exc_info()
+                logging.info("save fail in Post case :%s" %(traceback.format_exception(exc_type,
+                                                                                            exc_value,
+                                                                                            exc_traceback), ))
 
         self.redirect("/admin/post")
 
@@ -531,13 +615,12 @@ class AdminPostHandler(Base.BackRequestHandler):
                 comments = t.comments.fetch(1000)
 
                 Model.Comment.deletes(comments)
-                logging.info("GeiLi?")
                 tags = Model.tags_posts.all().filter("post =", t.key()).fetch(1000)
                 Model.tags_posts.deletes(tags)
 
                 t.delete()
             except:
-                self.write("error case:%s" % (str(sys.exc_info()),))
+                self.write("error case:%s" % (sys.exc_info(),))
                 return
             self.write("ok")
 
@@ -575,7 +658,7 @@ class AdminCommentHandler(Base.BackRequestHandler):
         comments = Model.Comment.fetch(p, fun=lambda x: x.order("-created"))
         idgenerater = Base.idgen((p-1) * 20 + 1)
 
-        datas = [(str(idgenerater.next()), i.content[:400], i.ip, i.created, i.key()) for i in comments.data]
+        datas = [(str(idgenerater.next()), i.content[:400], i.ip, Base.UTCtoLocal(i.created), i.key()) for i in comments.data]
 
         self.render("AdminComment.html", { "datas" : datas,
                                            "title": "评论管理",
@@ -586,16 +669,21 @@ class AdminCommentHandler(Base.BackRequestHandler):
             try:
                 cment = Model.Comment()
                 cment.content = fromq(self.q("content"))
-
+                cment.created = Base.UTCtoLocal(datetime.datetime.now())
                 cment.put()
             except:
                 logging.info("save fail in Comment (%s) case:%s" %(ntag.content, sys.exc_info()))
         elif slug != None:
             try:
                 cment = Model.Comment.get(slug)
-                cment.content = fromq(self.q("content"))
-
-                cment.put()
+                action = self.q("action")
+                if action == "delete" and cment != None:
+                    cment.delete()
+                    self.write("ok")
+                    return
+                else :
+                    cment.content = fromq(self.q("content"))
+                    cment.put()
             except:
                 logging.info("update fail in Comment (%s) case:%s" %(ntag.content, sys.exc_info()))
 
@@ -611,8 +699,20 @@ class AdminCommentHandler(Base.BackRequestHandler):
                 return
             self.write("ok")
 
-
-
+class AdminCronHandler(Base.BackRequestHandler):
+    '''
+    Cron Jobs
+    '''
+    def get(self, slug=None):
+        if slug == "refreshview":
+            view = memcache.get("views", namespace="Front")
+            if view != None:
+                for k,v in view.items():
+                    p = Model.Post.all().filter("realurl =", k).get()
+                    if p:
+                        p.views += v
+                        p.put()
+            memcache.delete("views", namespace="Front")
 
 
 

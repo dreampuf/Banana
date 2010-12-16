@@ -1,4 +1,4 @@
-﻿{% extends "AdminBase.html" %}
+{% extends "AdminBase.html" %}
 {% block maincontent %}
 <script type="text/javascript">
 $(function(){
@@ -11,9 +11,10 @@ $(function(){
                 location.href = "{{ baseurl }}/admin/tag/" + iData + "?p={{ p.index }}";
             } else if(iText == "删除") {
                     $.ajax({
-                        type:"DELETE",
+                        type:"POST",
                         url:"{{ baseurl }}/admin/tag/"+iData,
-                        data:{"user":iData},
+                        data:{"action":"delete",
+                              "user":iData},
                         success:function(msg){
                             if(msg == "ok") {
                                 $(event.target).parent().parent().remove();
