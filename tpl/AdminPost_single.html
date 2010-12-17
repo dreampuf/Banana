@@ -14,6 +14,7 @@
                        .replace("?","")
                        .replace("#","")
                        .replace(/([^\w\s]|\?)\s/, "$1").split(" ").join("_");
+        if(result.substr())
         $("input[name='url']").val(result);
     }
     $(document).ready(function () {

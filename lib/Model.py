@@ -177,12 +177,15 @@ class BaseModel(DBModel):
 
     @classmethod
     def total(cls, key="", fun=None):
+        '''
         tname = "tablecounter_%s::%s" % (cls.__name__, key)
         tval = Setting.getValue(tname, useMemoryCache=False)
         if tval == None:
             logging.info("beLongtime")
             tval = cls.all().count(None) if fun == None else fun(cls.all()).count(None)
             Setting.setValue(tname, tval, False)
+            '''
+        tval = cls.all().count(None) if fun == None else fun(cls.all()).count(None)
         return tval
 
 

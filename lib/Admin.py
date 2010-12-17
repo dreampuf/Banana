@@ -343,7 +343,11 @@ class AdminCategoryHandler(Base.BackRequestHandler):
                 action = self.q("action")
 
                 ncat = Model.Category.get(slug)
-                if action == "delete" and ncat != None:
+                if ncat == None:
+                    self.redirect("/admin/category")
+                    return
+
+                if action == "delete":
 #                    n = 0
 #                    posts = Model.Post.all().filter("category =", ncat).fetch(1000)
 #                    plen = len(posts)
@@ -427,6 +431,8 @@ class AdminTagHandler(Base.BackRequestHandler):
                 action = self.q("action")
                 ntag = Model.Tag.get(slug)
                 if action == "delete":
+                    rels = Model.tags_posts.all().filter("tag =", ntag).fetch(1000)
+                    Model.tags_posts.deletes(rels)
                     ntag.delete()
                     self.write("ok")
                     return
@@ -530,6 +536,7 @@ class AdminPostHandler(Base.BackRequestHandler):
                 p.author = Model.User.all().get() #TODO
                 category = Model.Category.get(fromq(self.q("category")))
                 p.category = category
+                p.created = datetime.datetime.now()
                 p.url = fromq(self.q("url"))
                 Base.processurl(p)
                 p.created = Base.ParserLocalTimeToUTC(self.q("created"))
@@ -553,6 +560,8 @@ class AdminPostHandler(Base.BackRequestHandler):
                             rela.post = p
                             rela.tag = t
                             rela.put()
+
+                Base.pinghub()
             except:
                 exc_type, exc_value, exc_traceback = sys.exc_info()
                 logging.info("save fail in Post case :%s" %(traceback.format_exception(exc_type,
@@ -566,6 +575,8 @@ class AdminPostHandler(Base.BackRequestHandler):
                     return
                 action = self.q("action")
                 if action == "delete":
+                    Model.Comment.deletes(Model.Comment.all().filter("belong =", p).fetch(1000))
+                    Model.tags_posts.deletes(Model.tags_posts.all().filter("post =", p).fetch(1000))
                     p.delete()
                     self.write("ok")
                     return
@@ -581,7 +592,7 @@ class AdminPostHandler(Base.BackRequestHandler):
                     p.precontent = fromq(self.q("precontent"))
                     p.put()
 
-                tags = fromq(self.q("tag"))
+                tags = fromq(self.q("tag")).split(",")
                 if tags == None:
                     ralas = Model.tags_posts.all().filter("post =", p).fetch(1000)
                     Model.tags_posts.deletes(ralas)

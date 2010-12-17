@@ -153,7 +153,7 @@ class DataProcessHandler(Base.FrontRequestHandler):
                                    random.randrange(1, 60))
 
     def get(self, slug=None):
-        htmls = '''<html><script src="/js/jquery-1.4.4.min.js"></script><body>
+        htmls = '''<html><script src="/js/common.js"></script><body>
 <script type="text/javascript">
 $(function(){
     $("#clearbtn").click(function(){
@@ -221,6 +221,7 @@ $(function(){
             a = Model.Post()
             a.category = categorys[random.randrange(clen)]
             a.author = users[random.randrange(ulen)]
+            a.created = datetime.datetime.now()
             a.title = self.getRstr(3, 15)
             a.content = self.getRstr(50, 200)
             a.precontent= self.getRstr(20, 70)
@@ -286,7 +287,7 @@ $(function(){
                 items = i.all().fetch(1000)
                 i.deletes(items)
         end_time = time.clock()
-        self.write(end_time - start_time)
+        self.write(str(end_time - start_time))
 
 
 

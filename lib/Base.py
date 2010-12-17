@@ -134,6 +134,17 @@ def processurl(p):
 
     p.realurl = url
 
+
+def pinghub():
+    data = urllib.urlencode({'hub.url': "%s/%s"%(Config.baseurl, Config.feed), 'hub.mode': 'publish'})
+    rpcs = []
+    for i in Config.hub:
+        rpc = urlfetch.create_rpc()
+        urlfetch.make_fetch_call(rpc, i)
+        rpcs.append(rpc)
+    for i in rpcs:
+        i.wait()
+
 class Event(object):
     _observers = {}
     def __init__(self):
